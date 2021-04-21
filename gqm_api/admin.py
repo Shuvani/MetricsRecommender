@@ -2,14 +2,6 @@ from django.contrib import admin
 from .models import *
 
 
-class UsersAdmin(admin.ModelAdmin):
-    list_display = ('original_id', )
-    list_display_links = ('original_id', )
-
-
-admin.site.register(User, UsersAdmin)
-
-
 class GoalsAdmin(admin.ModelAdmin):
     list_display = ('id', 'content', 'user_id')
     list_display_links = ('id', 'content')

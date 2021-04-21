@@ -1,7 +1,10 @@
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from rest_framework.views import APIView
-from .models import *
-from .serializers import *
+from .models import Goal, Metrics, Question
+from django.contrib.auth.models import User
+from .serializers import UserSerializer, GoalSerializer, QuestionSerializer, MetricsSerializer
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from drf_yasg import openapi
@@ -10,41 +13,45 @@ from drf_yasg.utils import swagger_auto_schema
 from .metrics_generator import create_metrics
 
 
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
 class GoalListCreateAPIView(generics.ListCreateAPIView):
     """
     get:
     API endpoint that returns a list of all existing goals.
-
     post:
     API endpoint to create a new goal.
     """
     queryset = Goal.objects.all()
     serializer_class = GoalSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
 
 class GoalDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     """
     get:
     API endpoint that returns the goal with this primary key.
-
     put:
     API endpoint that updates the goal with this primary key.
-
     patch:
     API endpoint that partially updates the goal with this primary key.
-
     delete:
     API endpoint that deletes the goal with this primary key.
     """
     queryset = Goal.objects.all()
     serializer_class = GoalSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
 
 class MetricsListCreateAPIView(generics.ListCreateAPIView):
     """
     get:
     API endpoint that returns a list of all existing metrics.
-
     post:
     API endpoint that creates a new metrics.
     """
@@ -56,13 +63,10 @@ class MetricsDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     """
     get:
     API endpoint that returns the metrics with this primary key.
-
     put:
     API endpoint that updates the metrics with this primary key.
-
     patch:
     API endpoint that partially updates the metrics with this primary key.
-
     delete:
     API endpoint that deletes the metrics with this primary key.
     """
@@ -74,7 +78,6 @@ class QuestionListCreateAPIView(generics.ListCreateAPIView):
     """
     get:
     API endpoint that returns a list of all existing questions.
-
     post:
     API endpoint to create a new question.
     """
@@ -86,13 +89,10 @@ class QuestionDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     """
     get:
     API endpoint that returns the question with this primary key.
-
     put:
     API endpoint that updates the question with this primary key.
-
     patch:
     API endpoint that partially updates the question with this primary key.
-
     delete:
     API endpoint that deletes the question with this primary key.
     """
@@ -142,3 +142,16 @@ class GoalQuestionsListAPIView(generics.ListAPIView):
     def get_queryset(self):
         goal_id = self.kwargs['goal_id']
         return Question.objects.filter(goal_id=goal_id)
+
+
+class UserGoalsListAPIView(generics.ListAPIView):
+    """
+    get:
+    API endpoint that returns a list of goals assigned to the user.
+    """
+    serializer_class = GoalSerializer
+    lookup_field = "user_id"
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+        return Goal.objects.filter(user_id=user_id)
