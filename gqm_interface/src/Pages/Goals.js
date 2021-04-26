@@ -6,21 +6,82 @@ import { useCookies} from "react-cookie";
 function Goals(props){
 
     const [token, setToken, deleteToken] = useCookies(['mr-token']);
+    const [goals, setGoals] = useState([])
+    const [content, setContent] = useState('')
+    const [isAddGoal, setIsAddGoal] = useState(false)
+    const [user_id, setUserId] = useState(1)
+
+    useEffect(() => {
+        getGoals()
+    }, [])
 
     const logoutUser = () => {
-        deleteToken(['mr-token']);
+        deleteToken('mr-token');
+        localStorage.removeItem('user_id');
     }
 
     const getGoals = () => {
-        API.getGoal(token)
-            .then( resp => console.log(resp))
+        return API.getGoal(token['mr-token'])
+            .then( resp => {
+                setGoals(resp)
+                let id = localStorage.getItem('user_id')
+                id = Number(id)
+                setUserId(id)
+            })
+    }
+
+    const removeClicked = goal => {
+        const newGoals = goals.filter( go => go.id !== goal.id);
+        setGoals(newGoals);
+    }
+
+    const deleteClicked = goal => {
+        API.deleteGoal(goal.id, token['mr-token'])
+            .then( () => removeClicked(goal))
+    }
+
+    const newGoal = goal => {
+        setIsAddGoal( false)
+        const newGoals = [...goals, goal];
+        setGoals(newGoals);
+    }
+
+    const saveNewGoal = () => {
+        API.createGoal({content, user_id}, token['mr-token'])
+            .then( resp => newGoal(resp))
     }
 
     return (
         <div className="GoalsPage">
             <a className="LogOut" href="/" onClick={logoutUser}>Log out</a>
-            <div className="GoalsContainer" onClick={getGoals}>
-                Goals
+            <div className="GoalsContainer">
+                <ol className="GoalsList">
+                    {goals.map(goal => {
+                        return (
+                            <div className="GoalButtonContainer">
+                                <li className="GoalsItem">
+                                    <a className="LinkToQuestions" href="/">
+                                        {goal.content}
+                                    </a>
+                                    <button className="DeleteButton Button" onClick={() => deleteClicked(goal)}>Delete</button>
+                                </li>
+                            </div>
+                        )
+                    })}
+                </ol>
+                {isAddGoal ?
+                    <div className="NewGoalContainer">
+                        <textarea className="TextNewGoal" type="text" placeholder="Enter your goal"
+                            value={content} onChange={evt => setContent(evt.target.value)}/>
+                        <button className="SaveButton Button" onClick={saveNewGoal}>Save</button>
+                    </div>
+                        : null
+                }
+                {isAddGoal ?
+                    <button className="UndoButton Button" onClick={() => setIsAddGoal(false)}>&#10005;</button>
+                     :
+                    <button className="AddButton Button" onClick={() => setIsAddGoal(true)}>+</button>
+                }
             </div>
         </div>
     )

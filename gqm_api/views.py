@@ -1,12 +1,17 @@
-from rest_framework import generics, viewsets
+from rest_framework import generics, viewsets, status
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.parsers import JSONParser
 from rest_framework.views import APIView
-from .models import Goal, Metrics, Question
-from django.contrib.auth.models import User
-from .serializers import UserSerializer, GoalSerializer, QuestionSerializer, MetricsSerializer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+
+from .models import *
+from django.contrib.auth.models import User
+from .serializers import *
+
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
@@ -18,6 +23,13 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
 
+class CustomObtainAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
+        token = Token.objects.get(key=response.data['token'])
+        return Response({'token': token.key, 'id': token.user_id})
+
+
 class GoalListCreateAPIView(generics.ListCreateAPIView):
     """
     get:
@@ -27,8 +39,20 @@ class GoalListCreateAPIView(generics.ListCreateAPIView):
     """
     queryset = Goal.objects.all()
     serializer_class = GoalSerializer
+
+
+class UserGoalsListAPIView(generics.ListAPIView):
+    """
+    get:
+    API endpoint that returns a list of all existing goals.
+    """
+    serializer_class = GoalSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
+
+    def get_queryset(self):
+        current_user_id = self.request.user.id
+        return Goal.objects.filter(user_id=current_user_id)
 
 
 class GoalDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -142,16 +166,3 @@ class GoalQuestionsListAPIView(generics.ListAPIView):
     def get_queryset(self):
         goal_id = self.kwargs['goal_id']
         return Question.objects.filter(goal_id=goal_id)
-
-
-class UserGoalsListAPIView(generics.ListAPIView):
-    """
-    get:
-    API endpoint that returns a list of goals assigned to the user.
-    """
-    serializer_class = GoalSerializer
-    lookup_field = "user_id"
-
-    def get_queryset(self):
-        user_id = self.kwargs['user_id']
-        return Goal.objects.filter(user_id=user_id)

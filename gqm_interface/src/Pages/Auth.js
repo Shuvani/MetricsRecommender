@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import {API} from '../api-service';
 import './Auth.css'
-import { useCookies } from 'react-cookie';
+import {useCookies} from 'react-cookie';
+import { useDispatch, useSelector } from 'react-redux'
 
 function Auth(){
 
@@ -16,7 +17,10 @@ function Auth(){
 
     const loginClicked = () => {
         API.loginUser({username, password})
-            .then( resp => setToken('mr-token', resp.token))
+            .then( resp => {
+                setToken('mr-token', resp.token)
+                localStorage.setItem('user_id', resp.id)
+            })
     }
 
     const registerClicked = () => {

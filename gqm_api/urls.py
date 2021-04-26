@@ -13,7 +13,7 @@ schema_view = get_schema_view(
         description="This is the API to work with goals, questions and metrics",
     ),
     public=True,
-    permission_classes=(permissions.AllowAny,),
+    permission_classes=(permissions.IsAuthenticated,),
 )
 
 router = routers.DefaultRouter()
@@ -21,14 +21,18 @@ router.register('users', UserViewSet)
 
 urlpatterns = [
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+
+    # url(r'^metrics/$', MetricsListCreateAPIView.as_view()),
+    # url(r'^metrics/(?P<pk>[0-9]+)$', MetricsDetailAPIView.as_view()),
+    # url(r'^questions/$', QuestionListCreateAPIView.as_view()),
+    # url(r'^questions/(?P<pk>[0-9]+)$', QuestionDetailAPIView.as_view()),
+    # url(r'^questions/generate-metrics$', QuestionMetricsCreateAPIView.as_view()),
+    # url(r'^goals/questions/(?P<goal_id>[0-9]+)$', GoalQuestionsListAPIView.as_view()),
+    # url(r'^users/goals/(?P<user_id>[0-9]+)$', UserGoalsListAPIView.as_view()),
+
     url('', include(router.urls)),
+    url(r'^auth/', CustomObtainAuthToken.as_view()),
     url(r'^goals/$', GoalListCreateAPIView.as_view()),
+    url(r'^user/goals/$', UserGoalsListAPIView.as_view()),
     url(r'^goals/(?P<pk>[0-9]+)$', GoalDetailAPIView.as_view()),
-    url(r'^metrics/$', MetricsListCreateAPIView.as_view()),
-    url(r'^metrics/(?P<pk>[0-9]+)$', MetricsDetailAPIView.as_view()),
-    url(r'^questions/$', QuestionListCreateAPIView.as_view()),
-    url(r'^questions/(?P<pk>[0-9]+)$', QuestionDetailAPIView.as_view()),
-    url(r'^questions/generate-metrics$', QuestionMetricsCreateAPIView.as_view()),
-    url(r'^goals/questions/(?P<goal_id>[0-9]+)$', GoalQuestionsListAPIView.as_view()),
-    url(r'^users/goals/(?P<user_id>[0-9]+)$', UserGoalsListAPIView.as_view()),
 ]
