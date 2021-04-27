@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {API} from '../api-service';
+import {API} from '../../api-service';
 import './Metrics.css'
 import { useCookies} from "react-cookie";
 
@@ -53,7 +53,7 @@ function Metrics(props){
                         {/*            <li className="MetricsItem">*/}
                         {/*                <p>{met.name}</p>*/}
                         {/*                <p>{met.description}</p>*/}
-                        {/*                <button className="DeleteButton Button" onClick={() => deleteClicked(question)}>Delete</button>*/}
+                        {/*                <button className="DeleteButton Buttons" onClick={() => deleteClicked(question)}>Delete</button>*/}
                         {/*            </li>*/}
                         {/*        </div>*/}
                         {/*    )*/}
@@ -63,14 +63,14 @@ function Metrics(props){
                     {/*    <div className="NewQuestionContainer">*/}
                     {/*        <textarea className="TextNewQuestion" type="text" placeholder="Enter your question"*/}
                     {/*            value={content} onChange={evt => setContent(evt.target.value)}/>*/}
-                    {/*        <button className="SaveButton Button" onClick={saveNewQuestion}>Save</button>*/}
+                    {/*        <button className="SaveButton Buttons" onClick={saveNewQuestion}>Save</button>*/}
                     {/*    </div>*/}
                     {/*        : null*/}
                     {/*}*/}
                     {/*{isAddQuestion ?*/}
-                    {/*    <button className="UndoButton Button" onClick={() => setIsAddQuestion(false)}>&#10005;</button>*/}
+                    {/*    <button className="UndoButton Buttons" onClick={() => setIsAddQuestion(false)}>&#10005;</button>*/}
                     {/*     :*/}
-                    {/*    <button className="AddButton Button" onClick={() => setIsAddQuestion(true)}>+</button>*/}
+                    {/*    <button className="AddButton Buttons" onClick={() => setIsAddQuestion(true)}>+</button>*/}
                     {/*}*/}
                 </div>
             </div>

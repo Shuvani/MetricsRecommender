@@ -1,6 +1,4 @@
 from rest_framework import generics, viewsets, status
-from rest_framework.decorators import api_view, permission_classes
-from rest_framework.parsers import JSONParser
 from rest_framework.views import APIView
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -18,11 +16,7 @@ from drf_yasg.utils import swagger_auto_schema
 from .metrics_generator import create_metrics
 
 
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
+# Authorization Endpoints
 class CustomObtainAuthToken(ObtainAuthToken):
     def post(self, request, *args, **kwargs):
         response = super(CustomObtainAuthToken, self).post(request, *args, **kwargs)
@@ -30,29 +24,23 @@ class CustomObtainAuthToken(ObtainAuthToken):
         return Response({'token': token.key, 'id': token.user_id})
 
 
-class GoalListCreateAPIView(generics.ListCreateAPIView):
-    """
-    get:
-    API endpoint that returns a list of all existing goals.
-    post:
-    API endpoint to create a new goal.
-    """
-    queryset = Goal.objects.all()
-    serializer_class = GoalSerializer
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
+# Goals Endpoints
 class UserGoalsListAPIView(generics.ListAPIView):
     """
     get:
-    API endpoint that returns a list of all existing goals.
+    API endpoint that returns a list of goals assigned to the current user.
     """
     serializer_class = GoalSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        current_user_id = self.request.user.id
-        return Goal.objects.filter(user_id=current_user_id)
+        return Goal.objects.filter(user_id=self.request.user.id)
 
 
 class GoalDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
@@ -72,6 +60,57 @@ class GoalDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
 
 
+class GoalListCreateAPIView(generics.ListCreateAPIView):
+    """
+    get:
+    API endpoint that returns a list of all existing goals.
+    post:
+    API endpoint to create a new goal.
+    """
+    queryset = Goal.objects.all()
+    serializer_class = GoalSerializer
+
+
+# Questions Endpoints
+class GoalQuestionsListAPIView(generics.ListAPIView):
+    """
+    get:
+    API endpoint that returns a list of questions assigned to the goal.
+    """
+    serializer_class = QuestionSerializer
+    lookup_field = "goal_id"
+
+    def get_queryset(self):
+        return Question.objects.filter(goal_id=self.kwargs['goal_id'])
+
+
+class QuestionDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    get:
+    API endpoint that returns the question with this primary key.
+    put:
+    API endpoint that updates the question with this primary key.
+    patch:
+    API endpoint that partially updates the question with this primary key.
+    delete:
+    API endpoint that deletes the question with this primary key.
+    """
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
+
+class QuestionListCreateAPIView(generics.ListCreateAPIView):
+    """
+    get:
+    API endpoint that returns a list of all existing questions.
+    post:
+    API endpoint to create a new question.
+    """
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+
+
+# Metrics Endpoints
 class MetricsListCreateAPIView(generics.ListCreateAPIView):
     """
     get:
@@ -96,32 +135,6 @@ class MetricsDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     """
     queryset = Metrics.objects.all()
     serializer_class = MetricsSerializer
-
-
-class QuestionListCreateAPIView(generics.ListCreateAPIView):
-    """
-    get:
-    API endpoint that returns a list of all existing questions.
-    post:
-    API endpoint to create a new question.
-    """
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
-
-
-class QuestionDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    get:
-    API endpoint that returns the question with this primary key.
-    put:
-    API endpoint that updates the question with this primary key.
-    patch:
-    API endpoint that partially updates the question with this primary key.
-    delete:
-    API endpoint that deletes the question with this primary key.
-    """
-    queryset = Question.objects.all()
-    serializer_class = QuestionSerializer
 
 
 class QuestionMetricsCreateAPIView(APIView):
@@ -153,16 +166,3 @@ class QuestionMetricsCreateAPIView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class GoalQuestionsListAPIView(generics.ListAPIView):
-    """
-    get:
-    API endpoint that returns a list of questions assigned to the goal.
-    """
-    serializer_class = QuestionSerializer
-    lookup_field = "goal_id"
-
-    def get_queryset(self):
-        goal_id = self.kwargs['goal_id']
-        return Question.objects.filter(goal_id=goal_id)

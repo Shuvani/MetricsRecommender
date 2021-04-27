@@ -5,10 +5,10 @@ import { Route, BrowserRouter } from 'react-router-dom';
 import { CookiesProvider } from "react-cookie";
 
 import './index.css';
-import Goals from './Pages/Goals';
-import Questions from './Pages/Questions';
-import Metrics from './Pages/Metrics';
 import Auth from './Pages/Auth/Auth'
+import Goals from './Pages/Goals/Goals';
+import Metrics from './Pages/Metrics/Metrics';
+import Questions from './Pages/Questions/Questions';
 
 
 function Router(){
@@ -19,11 +19,11 @@ function Router(){
                 <BrowserRouter>
                     <Route exact path="/" component={Auth} />
                     <Route exact path="/goals" component={Goals} />
-                    <Route exact path="/questions" component={Questions} />
                     <Route exact path="/metrics" component={Metrics} />
+                    <Route exact path="/questions" component={Questions} />
                 </BrowserRouter>
             </CookiesProvider>
-          </React.StrictMode>
+        </React.StrictMode>
     )
 }
 

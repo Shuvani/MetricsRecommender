@@ -1,7 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {API} from '../api-service';
-import './Questions.css'
 import { useCookies} from "react-cookie";
+
+import './Questions.css'
+import {QuestionsAPI} from './QuestionsAPI';
+import Item from '../../Componentns/Item/Item'
+import Header from '../../Componentns/Header/Header'
+import MainBlock from '../../Componentns/MainBlock/MainBlock'
+import RoundButton from "../../Componentns/Buttons/RoundButton";
+import RectangularButton from "../../Componentns/Buttons/RectangularButton";
+
 
 function Questions(props){
 
@@ -24,12 +31,12 @@ function Questions(props){
     }
 
     const getQuestions = (goal_id) => {
-        return API.getQuestions(goal_id, token['mr-token'])
+        return QuestionsAPI.getQuestions(goal_id, token['mr-token'])
             .then( resp => setQuestions(resp))
     }
 
     const deleteClicked = question => {
-        API.deleteQuestion(question.id, token['mr-token'])
+        QuestionsAPI.deleteQuestion(question.id, token['mr-token'])
             .then( () => {
                 const newQuestions = questions.filter( qe => qe.id !== question.id);
                 setQuestions(newQuestions);
@@ -43,7 +50,7 @@ function Questions(props){
     }
 
     const saveNewQuestion = () => {
-        API.createQuestion({content, goal_id}, token['mr-token'])
+        QuestionsAPI.createQuestion({content, goal_id}, token['mr-token'])
             .then( resp => newQuestion(resp))
     }
 
@@ -58,30 +65,28 @@ function Questions(props){
     }
 
     const getGoalById = () => {
-        return API.getGoalById(goal_id, token['mr-token'])
+        return QuestionsAPI.getGoalById(goal_id, token['mr-token'])
             .then( resp => setGoal(resp))
     }
 
      return (
         <div className="QuestionsPage">
-            <div className="HeaderContainer">
-                <a className="Navigation BackToGoals" onClick={goToGoals}>Back to goals</a>
-                <h1 className="GoalHeader">Goal: {goal.content}</h1>
-                <a className="Navigation QuestionLogOut" href="/" onClick={logoutUser}>Log out</a>
-            </div>
+            <Header
+                goBack={goToGoals}
+                header={'Goal'}
+                text={goal.content}
+                logOut={logoutUser}
+            />
             <div className="MainPartContainer">
-                <div className="QuestionsContainer">
+                <MainBlock>
                     <ol className="QuestionsList">
                         {questions.map(question => {
                             return (
-                                <div className="QuestionButtonContainer">
-                                    <li className="QuestionsItem">
-                                        <a className="LinkToMetrics" onClick={() => questionClicked(question.id)}>
-                                            {question.content}
-                                        </a>
-                                        <button className="DeleteButton Button" onClick={() => deleteClicked(question)}>Delete</button>
-                                    </li>
-                                </div>
+                                <Item
+                                    clicked={() => questionClicked(question.id)}
+                                    content={question.content}
+                                    delete={() => deleteClicked(question)}
+                                />
                             )
                         })}
                     </ol>
@@ -89,16 +94,20 @@ function Questions(props){
                         <div className="NewQuestionContainer">
                             <textarea className="TextNewQuestion" type="text" placeholder="Enter your question"
                                 value={content} onChange={evt => setContent(evt.target.value)}/>
-                            <button className="SaveButton Button" onClick={saveNewQuestion}>Save</button>
+                            <RectangularButton click={saveNewQuestion} text={'Save'}/>
                         </div>
-                            : null
+                        : null
                     }
                     {isAddQuestion ?
-                        <button className="UndoButton Button" onClick={() => setIsAddQuestion(false)}>&#10005;</button>
+                        <div className="ButtonContainer">
+                            <RoundButton click={() => setIsAddQuestion(false)} text={"x"} />
+                        </div>
                          :
-                        <button className="AddButton Button" onClick={() => setIsAddQuestion(true)}>+</button>
+                        <div className="ButtonContainer">
+                            <RoundButton click={() => setIsAddQuestion(true)} text={"+"} />
+                        </div>
                     }
-                </div>
+                </MainBlock>
             </div>
         </div>
     )

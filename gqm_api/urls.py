@@ -17,22 +17,26 @@ schema_view = get_schema_view(
 )
 
 router = routers.DefaultRouter()
-router.register('users', UserViewSet)
+router.register('register', UserViewSet)
 
 urlpatterns = [
+    # Swagger
     url(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    # Authorization
+    url('', include(router.urls)),  # register
+    url(r'^auth/', CustomObtainAuthToken.as_view()),  # log in
+    # Goals
+    url(r'^user/goals/$', UserGoalsListAPIView.as_view()),  # get user goals
+    url(r'^goals/$', GoalListCreateAPIView.as_view()),  # create goal
+    url(r'^goals/(?P<pk>[0-9]+)$', GoalDetailAPIView.as_view()),  # delete goal, get goal
+    # Questions
+    url(r'^questions/$', QuestionListCreateAPIView.as_view()),  # delete question
+    url(r'^questions/(?P<pk>[0-9]+)$', QuestionDetailAPIView.as_view()),  # delete question
+    url(r'^goal/questions/(?P<goal_id>[0-9]+)$', GoalQuestionsListAPIView.as_view()),  # get questions for goal
+    # Metrics
 
     # url(r'^metrics/$', MetricsListCreateAPIView.as_view()),
     # url(r'^metrics/(?P<pk>[0-9]+)$', MetricsDetailAPIView.as_view()),
-    url(r'^questions/$', QuestionListCreateAPIView.as_view()),
-    url(r'^questions/(?P<pk>[0-9]+)$', QuestionDetailAPIView.as_view()),
     # url(r'^questions/generate-metrics$', QuestionMetricsCreateAPIView.as_view()),
-    url(r'^goals/questions/(?P<goal_id>[0-9]+)$', GoalQuestionsListAPIView.as_view()),
     # url(r'^users/goals/(?P<user_id>[0-9]+)$', UserGoalsListAPIView.as_view()),
-
-    url('', include(router.urls)),
-    url(r'^auth/', CustomObtainAuthToken.as_view()),
-    url(r'^goals/$', GoalListCreateAPIView.as_view()),
-    url(r'^user/goals/$', UserGoalsListAPIView.as_view()),
-    url(r'^goals/(?P<pk>[0-9]+)$', GoalDetailAPIView.as_view()),
 ]

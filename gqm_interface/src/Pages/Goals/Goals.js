@@ -1,7 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {API} from '../api-service';
-import './Goals.css'
 import { useCookies} from "react-cookie";
+
+import './Goals.css'
+import {GoalsAPI} from './GoalsAPI';
+import Item from "../../Componentns/Item/Item";
+import MainBlock from '../../Componentns/MainBlock/MainBlock'
+import RoundButton from "../../Componentns/Buttons/RoundButton";
+import RectangularButton from "../../Componentns/Buttons/RectangularButton";
 
 function Goals(props){
 
@@ -21,7 +26,7 @@ function Goals(props){
     }
 
     const getGoals = () => {
-        return API.getGoal(token['mr-token'])
+        return GoalsAPI.getGoals(token['mr-token'])
             .then( resp => {
                 setGoals(resp)
                 let id = localStorage.getItem('user_id')
@@ -31,7 +36,7 @@ function Goals(props){
     }
 
     const deleteClicked = goal => {
-        API.deleteGoal(goal.id, token['mr-token'])
+        GoalsAPI.deleteGoal(goal.id, token['mr-token'])
             .then( () => {
                 const newGoals = goals.filter( go => go.id !== goal.id);
                 setGoals(newGoals);
@@ -45,7 +50,7 @@ function Goals(props){
     }
 
     const saveNewGoal = () => {
-        API.createGoal({content, user_id}, token['mr-token'])
+        GoalsAPI.createGoal({content, user_id}, token['mr-token'])
             .then( resp => newGoal(resp))
     }
     
@@ -56,19 +61,16 @@ function Goals(props){
 
     return (
         <div className="GoalsPage">
-            <a className="LogOut" href="/" onClick={logoutUser}>Log out</a>
-            <div className="GoalsContainer">
+            <a className="GoalsLogOut" href="/" onClick={logoutUser}>Log out</a>
+            <MainBlock>
                 <ol className="GoalsList">
                     {goals.map(goal => {
                         return (
-                            <div className="GoalButtonContainer">
-                                <li className="GoalsItem">
-                                    <a className="LinkToQuestions" onClick={() => goalClicked(goal.id)}>
-                                        {goal.content}
-                                    </a>
-                                    <button className="DeleteButton Button" onClick={() => deleteClicked(goal)}>Delete</button>
-                                </li>
-                            </div>
+                            <Item
+                                clicked={() => goalClicked(goal.id)}
+                                content={goal.content}
+                                delete={() => deleteClicked(goal)}
+                            />
                         )
                     })}
                 </ol>
@@ -76,16 +78,20 @@ function Goals(props){
                     <div className="NewGoalContainer">
                         <textarea className="TextNewGoal" type="text" placeholder="Enter your goal"
                             value={content} onChange={evt => setContent(evt.target.value)}/>
-                        <button className="SaveButton Button" onClick={saveNewGoal}>Save</button>
+                        <RectangularButton click={saveNewGoal} text={'Save'}/>
                     </div>
                         : null
                 }
                 {isAddGoal ?
-                    <button className="UndoButton Button" onClick={() => setIsAddGoal(false)}>&#10005;</button>
+                    <div className="ButtonContainer">
+                        <RoundButton click={() => setIsAddGoal(false)} text={"x"} />
+                    </div>
                      :
-                    <button className="AddButton Button" onClick={() => setIsAddGoal(true)}>+</button>
+                    <div className="ButtonContainer">
+                        <RoundButton click={() => setIsAddGoal(true)} text={"+"} />
+                    </div>
                 }
-            </div>
+            </MainBlock>
         </div>
     )
 }

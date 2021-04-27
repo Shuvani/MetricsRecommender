@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {API} from '../../api-service';
-import './Auth.css'
 import {useCookies} from 'react-cookie';
-import { useDispatch, useSelector } from 'react-redux'
+
+import {AuthAPI} from './AuthAPI';
+import './Auth.css'
+import MainBlock from '../../Componentns/MainBlock/MainBlock'
+
 
 function Auth(){
 
@@ -16,7 +18,7 @@ function Auth(){
     }, [token])
 
     const loginClicked = () => {
-        API.loginUser({username, password})
+        AuthAPI.loginUser({username, password})
             .then( resp => {
                 setToken('mr-token', resp.token)
                 localStorage.setItem('user_id', resp.id)
@@ -24,33 +26,27 @@ function Auth(){
     }
 
     const registerClicked = () => {
-        API.registerUser({username, password})
+        AuthAPI.registerUser({username, password})
             .then( () => loginClicked())
     }
 
     return (
         <div className="AuthPage">
-            <div className="AuthContainer">
-
+            <MainBlock>
                 {isLoginView ?
                     <h1 className="AuthHeader">LogIn</h1> :
                     <h1 className="AuthHeader">Register</h1>
                 }
-
-                <div className="AuthInputContainer">
-                    <input className="AuthInput" type="text" placeholder="username"
+                <div>
+                <input className="AuthInput" type="text" placeholder="username"
                            onChange={evt => setUsername(evt.target.value)}/>
                 </div>
-                <div className="AuthInputContainer">
                 <input className="AuthInput" type="password" placeholder="password"
                        onChange={evt => setPassword(evt.target.value)}/>
-                </div>
-
                 {isLoginView ?
                     <button className="AuthButton" onClick={loginClicked}>LogIn</button> :
                     <button className="AuthButton" onClick={registerClicked}>Register</button>
                 }
-
                 {isLoginView ?
                     <a className="AuthText" onClick={() => setIsLoginView(false)}>
                         You don't have an account? Register here!
@@ -59,8 +55,7 @@ function Auth(){
                         You already have an account? Login here!
                     </a>
                 }
-
-            </div>
+            </MainBlock>
         </div>
     )
 }
