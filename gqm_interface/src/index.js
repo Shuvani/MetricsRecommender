@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Goals from './Pages/Goals';
-import Auth from './Pages/Auth'
 import reportWebVitals from './reportWebVitals';
 import { Route, BrowserRouter } from 'react-router-dom';
 import { CookiesProvider } from "react-cookie";
+
+import './index.css';
+import Goals from './Pages/Goals';
+import Questions from './Pages/Questions';
+import Metrics from './Pages/Metrics';
+import Auth from './Pages/Auth/Auth'
+
 
 function Router(){
 
@@ -15,6 +19,8 @@ function Router(){
                 <BrowserRouter>
                     <Route exact path="/" component={Auth} />
                     <Route exact path="/goals" component={Goals} />
+                    <Route exact path="/questions" component={Questions} />
+                    <Route exact path="/metrics" component={Metrics} />
                 </BrowserRouter>
             </CookiesProvider>
           </React.StrictMode>

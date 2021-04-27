@@ -24,10 +24,10 @@ urlpatterns = [
 
     # url(r'^metrics/$', MetricsListCreateAPIView.as_view()),
     # url(r'^metrics/(?P<pk>[0-9]+)$', MetricsDetailAPIView.as_view()),
-    # url(r'^questions/$', QuestionListCreateAPIView.as_view()),
-    # url(r'^questions/(?P<pk>[0-9]+)$', QuestionDetailAPIView.as_view()),
+    url(r'^questions/$', QuestionListCreateAPIView.as_view()),
+    url(r'^questions/(?P<pk>[0-9]+)$', QuestionDetailAPIView.as_view()),
     # url(r'^questions/generate-metrics$', QuestionMetricsCreateAPIView.as_view()),
-    # url(r'^goals/questions/(?P<goal_id>[0-9]+)$', GoalQuestionsListAPIView.as_view()),
+    url(r'^goals/questions/(?P<goal_id>[0-9]+)$', GoalQuestionsListAPIView.as_view()),
     # url(r'^users/goals/(?P<user_id>[0-9]+)$', UserGoalsListAPIView.as_view()),
 
     url('', include(router.urls)),

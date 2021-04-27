@@ -30,14 +30,12 @@ function Goals(props){
             })
     }
 
-    const removeClicked = goal => {
-        const newGoals = goals.filter( go => go.id !== goal.id);
-        setGoals(newGoals);
-    }
-
     const deleteClicked = goal => {
         API.deleteGoal(goal.id, token['mr-token'])
-            .then( () => removeClicked(goal))
+            .then( () => {
+                const newGoals = goals.filter( go => go.id !== goal.id);
+                setGoals(newGoals);
+            })
     }
 
     const newGoal = goal => {
@@ -50,6 +48,11 @@ function Goals(props){
         API.createGoal({content, user_id}, token['mr-token'])
             .then( resp => newGoal(resp))
     }
+    
+    const goalClicked = (goal_id) => {
+        localStorage.setItem('goal_id', goal_id)
+        window.location.href = '/questions';
+    }
 
     return (
         <div className="GoalsPage">
@@ -60,7 +63,7 @@ function Goals(props){
                         return (
                             <div className="GoalButtonContainer">
                                 <li className="GoalsItem">
-                                    <a className="LinkToQuestions" href="/">
+                                    <a className="LinkToQuestions" onClick={() => goalClicked(goal.id)}>
                                         {goal.content}
                                     </a>
                                     <button className="DeleteButton Button" onClick={() => deleteClicked(goal)}>Delete</button>

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {API} from '../api-service';
+import {API} from '../../api-service';
 import './Auth.css'
 import {useCookies} from 'react-cookie';
 import { useDispatch, useSelector } from 'react-redux'
