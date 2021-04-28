@@ -1,0 +1,71 @@
+.MetricsPage {
+    width: 100vw;
+    height: 100vh;
+}
+
+.MainPartContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70%;
+}
+
+.MetricsMainBlock{
+    min-width: 30%;
+    min-height: 20vh;
+
+    padding: 2vh 2vw;
+    margin: 2vh 4vw;
+
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
+
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.MetricsMainBlock:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.BottomPart {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.CheckboxContainer {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.CheckboxContainer > input, .CheckboxContainer > label {
+    cursor: pointer;
+    font-size: 0.7em;
+}
+
+.AllMetricsHeader {
+    font-size: 0.9em;
+    font-weight: normal;
+    margin: 0;
+}
+
+.ListOfAllMetrics {
+    padding: 0;
+    margin: 0 0 1.5em 0;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.MetricsLabel {
+    margin-left: 0.1em;
+}
+
+.ButtonContainer {
+    position: absolute;
+    bottom: 1vh;
+    right: 1vw;
+}

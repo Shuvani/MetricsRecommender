@@ -54,8 +54,8 @@ function Questions(props){
             .then( resp => newQuestion(resp))
     }
 
-    const questionClicked = (question_id) => {
-        localStorage.setItem('question_id', question_id)
+    const questionClicked = (question) => {
+        localStorage.setItem('question_id', question.id)
         window.location.href = '/metrics';
     }
 
@@ -73,6 +73,7 @@ function Questions(props){
         <div className="QuestionsPage">
             <Header
                 goBack={goToGoals}
+                goBackText={'Back to goals'}
                 header={'Goal'}
                 text={goal.content}
                 logOut={logoutUser}
@@ -83,7 +84,7 @@ function Questions(props){
                         {questions.map(question => {
                             return (
                                 <Item
-                                    clicked={() => questionClicked(question.id)}
+                                    clicked={() => questionClicked(question)}
                                     content={question.content}
                                     delete={() => deleteClicked(question)}
                                 />

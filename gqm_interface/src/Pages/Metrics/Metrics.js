@@ -1,24 +1,34 @@
 import React, {useState, useEffect} from 'react';
-import {API} from '../../api-service';
-import './Metrics.css'
 import { useCookies} from "react-cookie";
+
+import './Metrics.css'
+import {MetricsAPI} from './MetricsAPI';
+import Header from "../../Componentns/Header/Header";
+import MainBlock from '../../Componentns/MainBlock/MainBlock'
+import RectangularButton from "../../Componentns/Buttons/RectangularButton";
+import Item from "../../Componentns/Item/Item";
 
 function Metrics(props){
 
-    const [token, setToken, deleteToken] = useCookies(['mr-token']);
+    const [token, deleteToken] = useCookies(['mr-token']);
     const [metrics, setMetrics] = useState([])
+    const [allMetrics, setAllMetrics] = useState([])
     const [question, setQuestion] = useState([])
+    const [hasMetrics, setHasMetrics] = useState(false)
+    const [isActionChoise, setIsActionChoise] = useState(true)
+    const [isGenerate, setIsGenerate] = useState(false)
+    const [isPrecooked, setIsPrecooked] = useState(false)
+    const [isHandPick, setIsHandPick] = useState(false)
     const question_id = localStorage.getItem('question_id')
 
     useEffect(() => {
-        // getMetrics(question_id)
         getQuestionById()
     }, [])
 
-    // const getMetrics = (question_id) => {
-    //     return API.getMetrics(question_id, token['mr-token'])
-    //         .then( resp => setMetrics(resp))
-    // }
+    const getQuestionById = () => {
+        return MetricsAPI.getQuestionById(question_id, token['mr-token'])
+            .then( resp => setQuestion(resp))
+    }
 
     const logoutUser = () => {
         deleteToken('mr-token');
@@ -32,51 +42,188 @@ function Metrics(props){
         window.location.href = '/questions';
     }
 
-    const getQuestionById = () => {
-        return API.getQuestionById(question_id, token['mr-token'])
-            .then( resp => setQuestion(resp))
+    const clickedGenerate = () => {
+        setIsActionChoise(false)
+        setIsGenerate(true)
+        generateMetrics(question_id)
+    }
+
+    const generateMetrics = (question_id) => {
+        return MetricsAPI.generateMetrics(question_id, token['mr-token'])
+            .then( resp => setMetrics(resp.metrics))
+    }
+
+    const clickedPrecooked = () => {
+        setIsActionChoise(false)
+        setIsPrecooked(true)
+        assignMetrics(question_id)
+    }
+
+    const assignMetrics = (question_id) => {
+        return MetricsAPI.assignMetrics(question_id, token['mr-token'])
+            .then( resp => setMetrics(resp.metrics))
+    }
+
+    const clickedHandPick = () => {
+        setIsActionChoise(false)
+        setIsHandPick(true)
+        listMetrics()
+    }
+
+    const listMetrics = () => {
+        return MetricsAPI.listMetrics(token['mr-token'])
+            .then( resp => {
+                let newList = resp.map(data => {
+                    return {
+                        select: false,
+                        description: data.description,
+                        name: data.name
+                    }
+                })
+                setAllMetrics(newList)
+            })
+
+    }
+
+    const saveChosenMetrics = () => {
+        let newList = allMetrics.map(data => {
+                    if(data.select === true) {
+                        return {
+                            name: data.name
+                        }
+                    }
+                })
+        var filtered = newList.filter(function (el) {
+          return el != null;
+        });
+        return MetricsAPI.saveChosenMetrics(filtered, question_id, token['mr-token'])
+            .then( resp => setMetrics(resp.metrics))
     }
 
     return (
         <div className="MetricsPage">
-            <div className="HeaderContainer">
-                <a className="Navigation BackToQuestions" onClick={goToQuestions}>Back to questions</a>
-                <h1 className="QuestionHeader">Question: {question.content}</h1>
-                <a className="Navigation MetricsLogOut" href="/" onClick={logoutUser}>Log out</a>
-            </div>
+            <Header
+                goBack={goToQuestions}
+                goBackText={'Back to questions'}
+                header={'Question'}
+                text={question.content}
+                logOut={logoutUser}
+            />
             <div className="MainPartContainer">
-                <div className="MetricsContainer">
-                    <ol className="MetricsList">
-                        {/*{metrics.map(met => {*/}
-                        {/*    return (*/}
-                        {/*        <div className="MetricsButtonContainer">*/}
-                        {/*            <li className="MetricsItem">*/}
-                        {/*                <p>{met.name}</p>*/}
-                        {/*                <p>{met.description}</p>*/}
-                        {/*                <button className="DeleteButton Buttons" onClick={() => deleteClicked(question)}>Delete</button>*/}
-                        {/*            </li>*/}
-                        {/*        </div>*/}
-                        {/*    )*/}
-                        {/*})}*/}
-                    </ol>
-                    {/*{isAddQuestion ?*/}
-                    {/*    <div className="NewQuestionContainer">*/}
-                    {/*        <textarea className="TextNewQuestion" type="text" placeholder="Enter your question"*/}
-                    {/*            value={content} onChange={evt => setContent(evt.target.value)}/>*/}
-                    {/*        <button className="SaveButton Buttons" onClick={saveNewQuestion}>Save</button>*/}
-                    {/*    </div>*/}
-                    {/*        : null*/}
-                    {/*}*/}
-                    {/*{isAddQuestion ?*/}
-                    {/*    <button className="UndoButton Buttons" onClick={() => setIsAddQuestion(false)}>&#10005;</button>*/}
-                    {/*     :*/}
-                    {/*    <button className="AddButton Buttons" onClick={() => setIsAddQuestion(true)}>+</button>*/}
-                    {/*}*/}
-                </div>
+                {isActionChoise ?
+                    <div className="MetricsMainBlock">
+                        <div className="TopPart">
+                            {question.metrics ?
+                                question.metrics.map(met => {
+                                    return (
+                                        <div className="Metrics">{met}</div>
+                                    )
+                                }) :
+                                null
+                            }
+                        </div>
+                        <div className="BottomPart">
+                            <RectangularButton click={clickedGenerate} text="Generate"/>
+                            <RectangularButton click={clickedPrecooked} text="Precooked"/>
+                            <RectangularButton click={clickedHandPick}  text="Hand-pick"/>
+                        </div>
+                    </div>
+                    :
+                    <MainBlock>
+                        <Generate isGenerate={isGenerate} metrics={metrics} />
+                        <Precooked isPrecooked={isPrecooked} metrics={metrics}/>
+                        <HandPick
+                            isHandPick={isHandPick}
+                            metrics={allMetrics}
+                            click={saveChosenMetrics}
+                            setAllMetrics={setAllMetrics}
+                            allMetrics={allMetrics}
+                        />
+                    </MainBlock>
+                }
             </div>
         </div>
     )
 
+}
+
+function Generate(props) {
+    return (
+        <React.Fragment>
+            {props.isGenerate ?
+                <ol className="MetricsList">
+                    {props.metrics.map(met => {
+                        return (
+                            <div>{met}</div>
+                        )
+                    })}
+                </ol>
+                : null
+            }
+        </React.Fragment>
+    )
+}
+
+function Precooked(props) {
+    return (
+        <React.Fragment>
+            { props.isPrecooked ?
+                <ol className="MetricsList">
+                    {props.metrics.map(met => {
+                        return (
+                            <div>{met}</div>
+                        )
+                    })}
+                </ol>
+                : null
+            }
+        </React.Fragment>
+    )
+}
+
+function HandPick(props) {
+
+    return (
+        <form>
+            <div>
+                {props.metrics ?
+                    props.isHandPick ?
+                        <React.Fragment>
+                            <h1 className="AllMetricsHeader">Choose the appropriate metrics:</h1>
+                            <ol className="ListOfAllMetrics">
+                                {props.metrics.map(met => {
+                                    return (
+                                        <div className="CheckboxContainer">
+                                            <input
+                                                type="checkbox"
+                                                id={met.name}
+                                                checked={met.select}
+                                                onChange={event => {
+                                                    let checked = event.target.checked;
+                                                    props.setAllMetrics(props.allMetrics.map(data => {
+                                                        if(met.name === data.name){
+                                                            data.select = checked;
+                                                        }
+                                                        return data;
+                                                    }))
+                                                }}
+                                            />
+                                            <label className="MetricsLabel" htmlFor={met.name}>{met.name}</label>
+                                        </div>
+                                    )
+                                })}
+                            </ol>
+                        </React.Fragment>
+                        : null
+                    :
+                    null
+                }
+            </div>
+            <div className="ButtonContainer">
+                <RectangularButton click={props.click} text={'Save'}/>
+            </div>
+        </form>
+    )
 }
 
 export default Metrics;

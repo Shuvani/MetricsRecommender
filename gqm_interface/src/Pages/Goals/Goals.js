@@ -50,6 +50,7 @@ function Goals(props){
     }
 
     const saveNewGoal = () => {
+        console.log({content, user_id})
         GoalsAPI.createGoal({content, user_id}, token['mr-token'])
             .then( resp => newGoal(resp))
     }

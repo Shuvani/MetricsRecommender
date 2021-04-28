@@ -32,3 +32,14 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = '__all__'
+
+
+# class CustomQuestionSerializer(serializers.Serializer):
+#     content = serializers.CharField(max_length=500)
+#     goal_id_id = serializers.IntegerField()
+#     metrics = serializers.ListField(
+#         child=serializers.CharField(max_length=250)
+#     )
+#
+#     def create(self, validated_data):
+#         return Question.objects.create(**validated_data)

@@ -71,10 +71,10 @@ def create_dictionary(question):
     metrics = question.metrics.all()
     # create the dictionary with metrics
     metrics_dict = {}
+    i = 1
     for item in metrics:
-        metrics_id = str(item.id)
-        metrics_name = item.name
-        metrics_dict[metrics_id] = metrics_name
+        metrics_dict[str(i)] = item.name
+        i += 1
     return {'id': question_id,
             'content': content,
             'goal_id': goal_id,
@@ -172,7 +172,7 @@ def create_metrics(content):
             metrics.append(metrics_names[counter])
         counter += 1
     if not metrics:
-        metrics = ['categories', 'top', 'time', 'activities']
+        metrics = []
     # map metrics names to metrics ids
-    metrics = list(map(lambda x: Metrics.objects.get(name=x).id, metrics))
+    # metrics = list(map(lambda x: Metrics.objects.get(name=x).id, metrics))
     return metrics

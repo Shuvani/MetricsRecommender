@@ -11,8 +11,8 @@ admin.site.register(Goal, GoalsAdmin)
 
 
 class MetricsAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'description')
-    list_display_links = ('id', 'name', )
+    list_display = ('name', 'description')
+    list_display_links = ('name', )
 
 
 admin.site.register(Metrics, MetricsAdmin)

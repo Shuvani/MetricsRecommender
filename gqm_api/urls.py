@@ -30,13 +30,15 @@ urlpatterns = [
     url(r'^goals/$', GoalListCreateAPIView.as_view()),  # create goal
     url(r'^goals/(?P<pk>[0-9]+)$', GoalDetailAPIView.as_view()),  # delete goal, get goal
     # Questions
-    url(r'^questions/$', QuestionListCreateAPIView.as_view()),  # delete question
-    url(r'^questions/(?P<pk>[0-9]+)$', QuestionDetailAPIView.as_view()),  # delete question
+    url(r'^questions/$', QuestionListCreateAPIView.as_view()),  # create question
+    url(r'^questions/(?P<pk>[0-9]+)$', QuestionDetailAPIView.as_view()),  # delete question, get question
     url(r'^goal/questions/(?P<goal_id>[0-9]+)$', GoalQuestionsListAPIView.as_view()),  # get questions for goal
     # Metrics
-
-    # url(r'^metrics/$', MetricsListCreateAPIView.as_view()),
-    # url(r'^metrics/(?P<pk>[0-9]+)$', MetricsDetailAPIView.as_view()),
-    # url(r'^questions/generate-metrics$', QuestionMetricsCreateAPIView.as_view()),
+    url(r'^metrics/$', MetricsListCreateAPIView.as_view()),
+    # url(r'^metrics/(?P<pk>[0-9]+)$', MetricsDetailAPIView.as_view()),  # get metrics for question
+    url(r'^question/generate-metrics/(?P<question_id>[0-9]+)$', QuestionMetricsGenerateAPIView.as_view()),  # generate metrics
+    url(r'^question/assign-metrics/(?P<question_id>[0-9]+)$', QuestionMetricsAssignAPIView.as_view()),  # precooked metrics
+url(r'^question/save-metrics/(?P<question_id>[0-9]+)$', QuestionMetricsSaveAPIView.as_view()),  # metrics chosen by hand
+    # url(r'^question/text-metrics/(?P<question_id>[0-9]+)$', QuestionGetAPIView.as_view()),
     # url(r'^users/goals/(?P<user_id>[0-9]+)$', UserGoalsListAPIView.as_view()),
 ]
