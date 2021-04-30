@@ -17,15 +17,17 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 from skmultilearn.adapt import MLkNN
+from skmultilearn.problem_transform import BinaryRelevance
+from sklearn.naive_bayes import GaussianNB
 from scipy.sparse import lil_matrix
 
 nltk.download("stopwords")
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
 
-BASE_PATH = '/home/shuva/Projects/RecService/RecServiceAPI/APIvenv/'
-PATH = 'RecService/gqm_collector/questions.tsv'
-PATH_TO_CSV = 'RecService/gqm_collector/questions.csv'
+BASE_PATH = '/home/shuva/Projects/metricsRecommender/venv/'
+PATH = 'MetricsRecommender/gqm_api/questions.tsv'
+PATH_TO_CSV = 'MetricsRecommender/gqm_api/questions.csv'
 stopwords = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 
@@ -129,7 +131,7 @@ def measurements(text, accuracy, f1, hamming):
 
 
 def knn(x_train, y_train, x_test):
-    knn_classifier = MLkNN(k=10)
+    knn_classifier = MLkNN(k=2)
     # to prevent errors when handling sparse matrices.
     x_train = lil_matrix(x_train).toarray()
     y_train = lil_matrix(y_train).toarray()
@@ -139,17 +141,25 @@ def knn(x_train, y_train, x_test):
     knn_predictions = knn_classifier.predict(x_test)
     return knn_predictions.toarray()
 
+# def gaussian(x_train, y_train, x_test):
+#     classifier = BinaryRelevance(GaussianNB())
+#     # to prevent errors when handling sparse matrices.
+#     classifier.fit(x_train, y_train)
+#     # predict
+#     predictions = classifier.predict(x_test)
+#     return predictions.toarray()
 
-def create_metrics(content):
-    questions = Question.objects.all()  # get all questions and all metrics assigned to them
+
+def create_metrics(content, question_id):
+    questions = Question.objects.exclude(pk=question_id)  # get all questions and all metrics assigned to them
     # text preprocessing
     for item in questions:
         item.content = clean_text(item.content)
         item.content = lemmatization(item.content)
     questions = list(map(lambda x: create_dictionary(x), questions))  # transform QuerySet into list of dictionaries
     # create tsv file
-    if not os.path.exists(BASE_PATH + PATH):
-        create_csv(questions, BASE_PATH + PATH)
+    # if not os.path.exists(BASE_PATH + PATH):
+    create_csv(questions, BASE_PATH + PATH)
     # putting tags variable into separate binary columns
     dataset = binarization(pd.read_csv(BASE_PATH + PATH, sep='\t', header=None))
     # User's new question preprocessing

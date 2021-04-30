@@ -12,7 +12,7 @@
 
 .QuestionsList{
     list-style: none;
-    padding: 0;
+    padding: 0 0 1em 0;
 }
 
 .NewQuestionContainer {

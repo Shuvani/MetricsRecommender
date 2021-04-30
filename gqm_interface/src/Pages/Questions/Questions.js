@@ -66,7 +66,10 @@ function Questions(props){
 
     const getGoalById = () => {
         return QuestionsAPI.getGoalById(goal_id, token['mr-token'])
-            .then( resp => setGoal(resp))
+            .then( resp => {
+                setGoal(resp)
+                localStorage.setItem('goal_content', resp.content)
+            })
     }
 
      return (
@@ -74,7 +77,7 @@ function Questions(props){
             <Header
                 goBack={goToGoals}
                 goBackText={'Back to goals'}
-                header={'Goal'}
+                header={'Goal: '}
                 text={goal.content}
                 logOut={logoutUser}
             />

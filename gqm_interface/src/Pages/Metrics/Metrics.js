@@ -10,7 +10,7 @@ import Item from "../../Componentns/Item/Item";
 
 function Metrics(props){
 
-    const [token, deleteToken] = useCookies(['mr-token']);
+    const [token, setToken, deleteToken] = useCookies(['mr-token']);
     const [metrics, setMetrics] = useState([])
     const [allMetrics, setAllMetrics] = useState([])
     const [question, setQuestion] = useState([])
@@ -20,6 +20,7 @@ function Metrics(props){
     const [isPrecooked, setIsPrecooked] = useState(false)
     const [isHandPick, setIsHandPick] = useState(false)
     const question_id = localStorage.getItem('question_id')
+    const goal_content = localStorage.getItem('goal_content')
 
     useEffect(() => {
         getQuestionById()
@@ -34,6 +35,7 @@ function Metrics(props){
         deleteToken('mr-token');
         localStorage.removeItem('user_id');
         localStorage.removeItem('goal_id');
+        localStorage.removeItem('goal_content');
         localStorage.removeItem('question_id');
     }
 
@@ -105,8 +107,10 @@ function Metrics(props){
             <Header
                 goBack={goToQuestions}
                 goBackText={'Back to questions'}
-                header={'Question'}
-                text={question.content}
+                header={'Goal: '}
+                text={goal_content}
+                subheader={'Question: '}
+                subtext={question.content}
                 logOut={logoutUser}
             />
             <div className="MainPartContainer">
@@ -129,7 +133,7 @@ function Metrics(props){
                         </div>
                     </div>
                     :
-                    <MainBlock>
+                    <div className="NewMainBlock">
                         <Generate isGenerate={isGenerate} metrics={metrics} />
                         <Precooked isPrecooked={isPrecooked} metrics={metrics}/>
                         <HandPick
@@ -139,7 +143,7 @@ function Metrics(props){
                             setAllMetrics={setAllMetrics}
                             allMetrics={allMetrics}
                         />
-                    </MainBlock>
+                    </div>
                 }
             </div>
         </div>
@@ -184,45 +188,43 @@ function Precooked(props) {
 function HandPick(props) {
 
     return (
-        <form>
-            <div>
-                {props.metrics ?
-                    props.isHandPick ?
-                        <React.Fragment>
-                            <h1 className="AllMetricsHeader">Choose the appropriate metrics:</h1>
-                            <ol className="ListOfAllMetrics">
-                                {props.metrics.map(met => {
-                                    return (
-                                        <div className="CheckboxContainer">
-                                            <input
-                                                type="checkbox"
-                                                id={met.name}
-                                                checked={met.select}
-                                                onChange={event => {
-                                                    let checked = event.target.checked;
-                                                    props.setAllMetrics(props.allMetrics.map(data => {
-                                                        if(met.name === data.name){
-                                                            data.select = checked;
-                                                        }
-                                                        return data;
-                                                    }))
-                                                }}
-                                            />
-                                            <label className="MetricsLabel" htmlFor={met.name}>{met.name}</label>
-                                        </div>
-                                    )
-                                })}
-                            </ol>
-                        </React.Fragment>
-                        : null
-                    :
-                    null
-                }
-            </div>
-            <div className="ButtonContainer">
-                <RectangularButton click={props.click} text={'Save'}/>
-            </div>
-        </form>
+        <React.Fragment>
+            {props.metrics ?
+                props.isHandPick ?
+                    <form className="MetricsCheckArea">
+                        <h1 className="AllMetricsHeader">Choose the appropriate metrics:</h1>
+                        <ol className="ListOfAllMetrics">
+                            {props.metrics.map(met => {
+                                return (
+                                    <li className="CheckboxContainer">
+                                        <input
+                                            type="checkbox"
+                                            id={met.name}
+                                            checked={met.select}
+                                            onChange={event => {
+                                                let checked = event.target.checked;
+                                                props.setAllMetrics(props.allMetrics.map(data => {
+                                                    if(met.name === data.name){
+                                                        data.select = checked;
+                                                    }
+                                                    return data;
+                                                }))
+                                            }}
+                                        />
+                                        <label title={met.description} className="MetricsLabel" htmlFor={met.name}>{met.name}</label>
+                                    </li>
+                                )
+                            })}
+                        </ol>
+                        <div className="ButtonContainer">
+                            <RectangularButton click={props.click} text={'Save'}/>
+                        </div>
+                    </form>
+                    : null
+                :
+                null
+            }
+        </React.Fragment>
     )
 }
 

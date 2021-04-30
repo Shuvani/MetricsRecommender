@@ -203,7 +203,7 @@ class QuestionMetricsGenerateAPIView(APIView):
         """API endpoint to generate metrics and assign them to the question"""
         question = Question.objects.filter(id=question_id)
         content = question.values()[0].get('content')
-        metrics = create_metrics(content)
+        metrics = create_metrics(content, question_id)
         data = {'metrics': metrics}
         serializer = QuestionSerializer(question.first(), data=data, partial=True)
         if serializer.is_valid():
@@ -219,7 +219,9 @@ class QuestionMetricsAssignAPIView(APIView):
         question = Question.objects.filter(id=question_id)
         content = question.values()[0].get('content')
         metrics = create_metrics(content)
-        data = {'metrics': ['first', 'second']}
+        data = {'metrics': ['Lines of code', 'Program vocabulary', 'Errors per LOC',
+                            'Pages of documentation per KLOC', 'Cost of quality',
+                            'Team velocity', 'Open-close']}
         serializer = QuestionSerializer(question.first(), data=data, partial=True)
         if serializer.is_valid():
             serializer.save()

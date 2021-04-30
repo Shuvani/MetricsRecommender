@@ -1,6 +1,7 @@
 .MainBlock{
     min-width: 30%;
     min-height: 20vh;
+    max-height: 70vh;
 
     position: relative;
 
