@@ -21,4 +21,5 @@
 43	precise recommendation	Make the system reliable	{'1': 'Accuracy', '2': 'F1-score', '3': 'Precision', '4': 'Recall'}
 63	increase productivity	Develop metrics recommender	{'1': 'Cost of quality', '2': 'Open-close', '3': 'Productivity'}
 64	increase complexity	Develop metrics recommender	{'1': 'Cyclomatic metric'}
-67	precise result	Develop metrics recommender	{}
+65	productivity complexity	Develop metrics recommender	{'1': 'Cost of quality', '2': 'Cyclomatic metric', '3': 'Open-close', '4': 'Productivity'}
+67	precise result	Develop metrics recommender	{'1': 'Accuracy', '2': 'F1-score', '3': 'Precision', '4': 'Recall'}

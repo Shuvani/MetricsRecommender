@@ -12,3 +12,16 @@ This is the system to recommend metrics based on the GQM model
    3.1 cd <path>/gqm_interface/
    3.2 npm install
    3.3 npm start
+   
+### How to use
+
+* You can login with one of this credentials if you want to see the existed data:
+
+    |username|password|
+    |-----|--------|
+    |Marina|password|
+    |Kirill|abc123| 
+    |Anna|sunshine|
+    |Artem|qwerty|
+    |Max|12345|
+* Or you can register and create your own goals, questions and metrics.
