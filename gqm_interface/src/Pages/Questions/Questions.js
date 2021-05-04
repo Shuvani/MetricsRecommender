@@ -83,6 +83,7 @@ function Questions(props){
             />
             <div className="MainPartContainer">
                 <MainBlock>
+                    <h1 className="QuestionsHeader">Questions</h1>
                     <ol className="QuestionsList">
                         {questions.map(question => {
                             return (

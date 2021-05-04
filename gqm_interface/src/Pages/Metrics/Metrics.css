@@ -80,6 +80,12 @@
     box-sizing: border-box;
 }
 
+.MetricsHeader {
+    margin: 0.1vh 0;
+    font-size: 1.3em;
+    color: var(--main-color);
+}
+
 .NewMainBlock{
     min-width: 80%;
     min-height: 20vh;

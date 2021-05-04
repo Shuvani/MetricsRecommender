@@ -10,6 +10,12 @@
     min-height: 70%;
 }
 
+.QuestionsHeader {
+    margin: 0.1vh 0;
+    font-size: 1.3em;
+    color: var(--main-color);
+}
+
 .QuestionsList{
     list-style: none;
     padding: 0 0 1em 0;

@@ -16,11 +16,9 @@
 35	protect system	Create an A/V tracker	{'1': 'Hotspots', '2': 'Smells', '3': 'Violations', '4': 'Vulnerabilities'}
 36	get system metric	Collecting various system metrics	{'1': 'Accuracy'}
 37	long store gather data	Collecting various system metrics	{'1': 'Memory consumption'}
-38	much resource system us	Take as little of system resources as possible	{'1': 'CPU load', '2': 'Memory consumption'}
-40	deadline	Develop metrics recommender	{'1': 'Active days', '2': 'Open-close', '3': 'Team velocity'}
+38	much resource system us	Take as little of system resources as possible	{'1': 'CPU load', '2': 'GPU load', '3': 'Memory consumption'}
 42	long system available	Make the system reliable	{'1': 'Application crash rate', '2': 'Mean time between failures', '3': 'Mean time to recover'}
 43	precise recommendation	Make the system reliable	{'1': 'Accuracy', '2': 'F1-score', '3': 'Precision', '4': 'Recall'}
-49	result	Develop metrics recommender	{'1': 'Accuracy', '2': 'F1-score', '3': 'Precision', '4': 'Recall'}
-50	result deadline	Develop metrics recommender	{'1': 'Active days', '2': 'Open-close', '3': 'Team velocity'}
-51	increase productivity	Add feature to the application	{'1': 'Cost of quality', '2': 'Open-close', '3': 'Productivity'}
-54	increase complexity	Add feature to the application	{'1': 'Cyclomatic metric'}
+63	increase productivity	Develop metrics recommender	{'1': 'Cost of quality', '2': 'Open-close', '3': 'Productivity'}
+64	increase complexity	Develop metrics recommender	{'1': 'Cyclomatic metric'}
+67	precise result	Develop metrics recommender	{}

@@ -64,6 +64,7 @@ function Goals(props){
         <div className="GoalsPage">
             <a className="GoalsLogOut" href="/" onClick={logoutUser}>Log out</a>
             <MainBlock>
+                <h1 className="GoalsHeader">Goals</h1>
                 <ol className="GoalsList">
                     {goals.map(goal => {
                         return (

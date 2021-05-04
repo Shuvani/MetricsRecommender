@@ -116,6 +116,7 @@ function Metrics(props){
             <div className="MainPartContainer">
                 {isActionChoise ?
                     <div className="MetricsMainBlock">
+                        <h1 className="MetricsHeader">Metrics</h1>
                         <div className="TopPart">
                             {question.metrics ?
                                 question.metrics.map(met => {

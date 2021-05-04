@@ -17,11 +17,9 @@
 15,35,protect system,Create an A/V tracker,"['Hotspots', 'Smells', 'Violations', 'Vulnerabilities']",0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,1
 16,36,get system metric,Collecting various system metrics,['Accuracy'],1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 17,37,long store gather data,Collecting various system metrics,['Memory consumption'],0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
-18,38,much resource system us,Take as little of system resources as possible,"['CPU load', 'Memory consumption']",0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
-19,40,deadline,Develop metrics recommender,"['Active days', 'Open-close', 'Team velocity']",0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0
-20,42,long system available,Make the system reliable,"['Application crash rate', 'Mean time between failures', 'Mean time to recover']",0,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
-21,43,precise recommendation,Make the system reliable,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
-22,49,result,Develop metrics recommender,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
-23,50,result deadline,Develop metrics recommender,"['Active days', 'Open-close', 'Team velocity']",0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0
-24,51,increase productivity,Add feature to the application,"['Cost of quality', 'Open-close', 'Productivity']",0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0
-25,54,increase complexity,Add feature to the application,['Cyclomatic metric'],0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+18,38,much resource system us,Take as little of system resources as possible,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+19,42,long system available,Make the system reliable,"['Application crash rate', 'Mean time between failures', 'Mean time to recover']",0,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+20,43,precise recommendation,Make the system reliable,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
+21,63,increase productivity,Develop metrics recommender,"['Cost of quality', 'Open-close', 'Productivity']",0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0
+22,64,increase complexity,Develop metrics recommender,['Cyclomatic metric'],0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+23,67,precise result,Develop metrics recommender,[],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
