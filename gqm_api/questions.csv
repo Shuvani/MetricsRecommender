@@ -1,26 +1,25 @@
-,id,content,goal_id,metrics,Accuracy,Active days,Application crash rate,CPU load,Cost of quality,Cyclomatic metric,Effort Variance,F1-score,GPU load,Hotspots,Mean time between failures,Mean time to recover,Memory consumption,Open-close,Pages of documentation per KLOC,Precision,Productivity,Recall,Run-time,Smells,Team velocity,Violations,Vulnerabilities
-0,20,precise speech recognition model,Develop a tool to check student's audiostream,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
-1,21,precise face recognition model,Develop a tool to keep track of student's attention,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
-2,22,perfomance recognition model good enough,Develop a tool to keep track of student's attention,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
-3,23,perfomance recognition model good enough,Develop a tool to check student's audiostream,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
-4,24,fit stakeholder requirement,Develop a tool to keep track of student's attention,"['Active days', 'Open-close', 'Pages of documentation per KLOC', 'Productivity', 'Team velocity']",0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,1,0,0
-5,25,fit stakeholder requirement,Develop a tool to check student's audiostream,"['Active days', 'Open-close', 'Pages of documentation per KLOC', 'Productivity', 'Team velocity']",0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,1,0,0
-6,26,precise track,Track and record data from I/O devices,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
-7,27,resource intensive track,Track and record data from I/O devices,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
-8,28,resource intensive processing,Detect user activity states and accumulate user activity data,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
-9,29,precise state detection,Detect user activity states and accumulate user activity data,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
-10,30,much effort want commit project,Create a cross-platform application till the deadline,"['Cost of quality', 'Effort Variance', 'Productivity']",0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
-11,31,much progress make,Create a cross-platform application till the deadline,"['Open-close', 'Team velocity']",0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0
-12,32,fast analyze data,Create an A/V tracker,['Run-time'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-13,33,precise analyze data,Create an A/V tracker,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
-14,34,much resource save,Create an A/V tracker,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
-15,35,protect system,Create an A/V tracker,"['Hotspots', 'Smells', 'Violations', 'Vulnerabilities']",0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,1
-16,36,get system metric,Collecting various system metrics,['Accuracy'],1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-17,37,long store gather data,Collecting various system metrics,['Memory consumption'],0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
-18,38,much resource system us,Take as little of system resources as possible,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
-19,42,long system available,Make the system reliable,"['Application crash rate', 'Mean time between failures', 'Mean time to recover']",0,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
-20,43,precise recommendation,Make the system reliable,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
-21,63,increase productivity,Develop metrics recommender,"['Cost of quality', 'Open-close', 'Productivity']",0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0
-22,64,increase complexity,Develop metrics recommender,['Cyclomatic metric'],0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-23,65,productivity complexity,Develop metrics recommender,"['Cost of quality', 'Cyclomatic metric', 'Open-close', 'Productivity']",0,0,0,0,1,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0
-24,67,precise result,Develop metrics recommender,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
+,id,content,goal_id,metrics,Accuracy,Active days,Application crash rate,CPU load,Cost of quality,Effort Variance,F1-score,GPU load,Hotspots,Mean time between failures,Mean time to recover,Memory consumption,Open-close,Pages of documentation per KLOC,Precision,Productivity,Recall,Run-time,Smells,Team velocity,Violations,Vulnerabilities
+0,20,precise speech recognition model,Develop a tool to check student's audiostream,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
+1,21,precise face recognition model,Develop a tool to keep track of student's attention,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
+2,22,perfomance recognition model good enough,Develop a tool to keep track of student's attention,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+3,23,perfomance recognition model good enough,Develop a tool to check student's audiostream,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+4,24,fit stakeholder requirement,Develop a tool to keep track of student's attention,"['Active days', 'Open-close', 'Pages of documentation per KLOC', 'Productivity', 'Team velocity']",0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,1,0,0
+5,25,fit stakeholder requirement,Develop a tool to check student's audiostream,"['Active days', 'Open-close', 'Pages of documentation per KLOC', 'Productivity', 'Team velocity']",0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,1,0,0
+6,26,precise track,Track and record data from I/O devices,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
+7,27,resource intensive track,Track and record data from I/O devices,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+8,28,resource intensive processing,Detect user activity states and accumulate user activity data,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+9,29,precise state detection,Detect user activity states and accumulate user activity data,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
+10,30,much effort want commit project,Create a cross-platform application till the deadline,"['Cost of quality', 'Effort Variance', 'Productivity']",0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0
+11,31,much progress make,Create a cross-platform application till the deadline,"['Open-close', 'Team velocity']",0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0
+12,32,fast analyze data,Create an A/V tracker,['Run-time'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0
+13,33,precise analyze data,Create an A/V tracker,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
+14,34,much resource save,Create an A/V tracker,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+15,35,protect system,Create an A/V tracker,"['Hotspots', 'Smells', 'Violations', 'Vulnerabilities']",0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,1
+16,36,get system metric,Collecting various system metrics,['Accuracy'],1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+17,37,long store gather data,Collecting various system metrics,['Memory consumption'],0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+18,38,much resource system us,Take as little of system resources as possible,"['CPU load', 'GPU load', 'Memory consumption']",0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+19,42,long system available,Make the system reliable,"['Application crash rate', 'Mean time between failures', 'Mean time to recover']",0,0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0
+20,43,precise recommendation,Make the system reliable,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
+21,63,increase productivity,Develop metrics recommender,['Smells'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
+22,64,increase complexity,Develop metrics recommender,['Recall'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
+23,67,precise result,Develop metrics recommender,"['Accuracy', 'F1-score', 'Precision', 'Recall']",1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0
