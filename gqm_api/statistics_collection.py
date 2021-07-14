@@ -1,28 +1,38 @@
 import re
-import os
-import nltk
 import csv
+import nltk
 import json
 import pandas as pd
 from .models import Question
+from scipy.sparse import lil_matrix
 
 from nltk.corpus import wordnet
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
+from sklearn.metrics import f1_score
+from sklearn.metrics import hamming_loss
+from sklearn.metrics import accuracy_score
+from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from scipy.sparse import lil_matrix
+from skmultilearn.adapt import MLkNN
+from skmultilearn.ensemble import RakelD
+from skmultilearn.problem_transform import BinaryRelevance
+from skmultilearn.problem_transform import ClassifierChain
+
 
 nltk.download("stopwords")
 nltk.download('wordnet')
 nltk.download('averaged_perceptron_tagger')
 
-BASE_PATH = os.path.abspath(os.getcwd())
-PATH = '/gqm_api/questions.tsv'
-PATH_TO_CSV = '/gqm_api/questions.csv'
+BASE_PATH = '/home/shuva/Projects/metricsRecommender/venv/'
+PATH = 'MetricsRecommender/gqm_api/questions.tsv'
+PATH_TO_CSV = 'MetricsRecommender/gqm_api/questions.csv'
 stopwords = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 
@@ -119,17 +129,41 @@ def vectorization(x_train, x_test):
     return x_train, x_test
 
 
-def decision_trees(x_train, y_train, x_test):
-    classifier = DecisionTreeClassifier()
+def measurements(text, accuracy, f1, hamming):
+    print(text + "Accuracy = ", accuracy)
+    print(text + "F1 score = ", f1)
+    print(text + "Hamming loss = ", hamming)
+
+
+def make_predictions(x_train, y_train, x_test, y_test, classifier, text):
     classifier.fit(x_train, y_train)
     # predict
     predictions = classifier.predict(x_test)
-    print(predictions[0])
-    return predictions
+    measurements(text=text,
+                 accuracy=accuracy_score(y_test, predictions),
+                 f1=f1_score(y_test, predictions, average="micro"),
+                 hamming=hamming_loss(y_test, predictions)
+                 )
+
+
+def knn(x_train, y_train, x_test, y_test):
+    classifier = MLkNN(k=3)
+    # to prevent errors when handling sparse matrices.
+    x_train = lil_matrix(x_train).toarray()
+    y_train = lil_matrix(y_train).toarray()
+    x_test = lil_matrix(x_test).toarray()
+    classifier.fit(x_train, y_train)
+    # predict
+    knn_predictions = classifier.predict(x_test)
+    measurements(text="KNN ",
+                 accuracy=accuracy_score(y_test, knn_predictions),
+                 f1=f1_score(y_test, knn_predictions, average="micro"),
+                 hamming=hamming_loss(y_test, knn_predictions)
+                 )
 
 
 def create_metrics(content, question_id):
-    questions = Question.objects.exclude(pk=question_id)  # get all questions and all metrics assigned to them
+    questions = Question.objects.all()  # get all questions and all metrics assigned to them
     # text preprocessing
     for item in questions:
         item.content = clean_text(item.content)
@@ -140,27 +174,26 @@ def create_metrics(content, question_id):
     create_csv(questions, BASE_PATH + PATH)
     # putting tags variable into separate binary columns
     dataset = binarization(pd.read_csv(BASE_PATH + PATH, sep='\t', header=None))
-    # User's new question preprocessing
-    content = clean_text(content)
-    content = lemmatization(content)
-    # dividing into training and test sets
-    x_train = dataset["content"]
-    y_train = dataset[dataset.columns[5:]]
-    x_test = [content]
+    x_train, x_test, y_train, y_test = train_test_split(
+        dataset['content'], dataset[dataset.columns[5:]], test_size=0.2, random_state=0)
     # vectorization
     x_train, x_test = vectorization(x_train, x_test)
-    # decision trees
-    predictions = decision_trees(x_train, y_train, x_test)
-    # map array of 0 and 1 into metrics names
-    metrics_names = dataset.columns[5:]
-    metrics = []
-    counter = 0
-    for item in predictions[0]:
-        if item != 0:
-            metrics.append(metrics_names[counter])
-        counter += 1
-    if not metrics:
-        metrics = []
-    # map metrics names to metrics ids
-    # metrics = list(map(lambda x: Metrics.objects.get(name=x).id, metrics))
-    return metrics
+    # make predictions
+    classifiers = {
+        "Binary relevance ": BinaryRelevance(GaussianNB()),
+        "Classifier chains ": ClassifierChain(GaussianNB()),
+        "Label powerset ": ClassifierChain(
+            classifier=RandomForestClassifier(n_estimators=100),
+            require_dense=[False, True]
+        ),
+        "RAkEL ": RakelD(
+            base_classifier=GaussianNB(),
+            base_classifier_require_dense=[True, True],
+            labelset_size=52
+        ),
+        "Decision trees ": DecisionTreeClassifier()
+    }
+    for text, classifier in classifiers.items():
+        make_predictions(x_train, y_train, x_test, y_test, classifier, text)
+    knn(x_train, y_train, x_test, y_test)
+    return []

@@ -1,24 +1,67 @@
-20	precise speech recognition model	Develop a tool to check student's audiostream	{'1': 'Accuracy', '2': 'F1-score', '3': 'Precision', '4': 'Recall'}
-21	precise face recognition model	Develop a tool to keep track of student's attention	{'1': 'Accuracy', '2': 'F1-score', '3': 'Precision', '4': 'Recall'}
-22	perfomance recognition model good enough	Develop a tool to keep track of student's attention	{'1': 'CPU load', '2': 'GPU load', '3': 'Memory consumption'}
-23	perfomance recognition model good enough	Develop a tool to check student's audiostream	{'1': 'CPU load', '2': 'GPU load', '3': 'Memory consumption'}
-24	fit stakeholder requirement	Develop a tool to keep track of student's attention	{'1': 'Active days', '2': 'Open-close', '3': 'Pages of documentation per KLOC', '4': 'Productivity', '5': 'Team velocity'}
-25	fit stakeholder requirement	Develop a tool to check student's audiostream	{'1': 'Active days', '2': 'Open-close', '3': 'Pages of documentation per KLOC', '4': 'Productivity', '5': 'Team velocity'}
-26	precise track	Track and record data from I/O devices	{'1': 'Accuracy', '2': 'F1-score', '3': 'Precision', '4': 'Recall'}
-27	resource intensive track	Track and record data from I/O devices	{'1': 'CPU load', '2': 'GPU load', '3': 'Memory consumption'}
-28	resource intensive processing	Detect user activity states and accumulate user activity data	{'1': 'CPU load', '2': 'GPU load', '3': 'Memory consumption'}
-29	precise state detection	Detect user activity states and accumulate user activity data	{'1': 'Accuracy', '2': 'F1-score', '3': 'Precision', '4': 'Recall'}
-30	much effort want commit project	Create a cross-platform application till the deadline	{'1': 'Cost of quality', '2': 'Effort Variance', '3': 'Productivity'}
-31	much progress make	Create a cross-platform application till the deadline	{'1': 'Open-close', '2': 'Team velocity'}
-32	fast analyze data	Create an A/V tracker	{'1': 'Run-time'}
-33	precise analyze data	Create an A/V tracker	{'1': 'Accuracy', '2': 'F1-score', '3': 'Precision', '4': 'Recall'}
-34	much resource save	Create an A/V tracker	{'1': 'CPU load', '2': 'GPU load', '3': 'Memory consumption'}
-35	protect system	Create an A/V tracker	{'1': 'Hotspots', '2': 'Smells', '3': 'Violations', '4': 'Vulnerabilities'}
-36	get system metric	Collecting various system metrics	{'1': 'Accuracy'}
-37	long store gather data	Collecting various system metrics	{'1': 'Memory consumption'}
-38	much resource system us	Take as little of system resources as possible	{'1': 'CPU load', '2': 'GPU load', '3': 'Memory consumption'}
-42	long system available	Make the system reliable	{'1': 'Application crash rate', '2': 'Mean time between failures', '3': 'Mean time to recover'}
-43	precise recommendation	Make the system reliable	{'1': 'Accuracy', '2': 'F1-score', '3': 'Precision', '4': 'Recall'}
-63	increase productivity	Develop metrics recommender	{'1': 'Smells'}
-64	increase complexity	Develop metrics recommender	{'1': 'Recall'}
-67	precise result	Develop metrics recommender	{'1': 'Accuracy', '2': 'F1-score', '3': 'Precision', '4': 'Recall'}
+1	current change request processing speed	Improve the timeliness of change request processing from the project manager's viewpoint	{'1': 'Average cycle time', '2': 'Percentage of cases outside the upper limit', '3': 'Standard deviation'}
+2	performance process improve	Improve the timeliness of change request processing from the project manager's viewpoint	{'1': 'Average cycle time excess'}
+3	change request process actually perform	Improve the timeliness of change request processing from the project manager's viewpoint	{'1': 'Number of exceptions', '2': 'Subjective evaluation'}
+4	deviation actual change request processing time estimate one	Improve the timeliness of change request processing from the project manager's viewpoint	{'1': 'Cycle time improvements', '2': 'Subjective evaluation'}
+5	current performance satisfactory viewpoint project manager	Improve the timeliness of change request processing from the project manager's viewpoint	{'1': 'Subjective evaluation'}
+6	performance visibly improve	Improve the timeliness of change request processing from the project manager's viewpoint	{'1': 'Average cycle time excess'}
+7	many unwanted behavior	Analyze the software product with respect to its quality for the purpose of characterization from the developer's point of view	{'1': 'Number of faults', '2': 'Number of warnings'}
+8	quality test	Analyze the software product with respect to its quality for the purpose of characterization from the developer's point of view	{'1': 'Code coverage'}
+9	user learn design quickly perform task	Efficiency	{'1': 'Screen duration', '2': 'Task completion time'}
+10	system fulfill requirement workload increase	Analyze the scalability of cloud computing system designs from a software architect's viewpoint	{'1': 'Scalability range', '2': 'Scalability speed'}
+11	often system violate requirement workload x time period	Analyze the elasticity of cloud computing system designs from a software architect's viewpoint	{'1': 'Number of defects'}
+12	point system violates requirement long take system recovers state requirement met	Analyze the elasticity of cloud computing system designs from a software architect's viewpoint	{'1': 'Mean time to quality repair'}
+13	close actual resource demand system align resource provision	Analyze the efficiency of cloud computing system designs from a software architect's viewpoint	{'1': 'Resource provisioning efficiency'}
+14	amount resource autonomously provision system give workload x	Analyze the efficiency of cloud computing system designs from a software architect's viewpoint	{'1': 'Marginal costs'}
+15	big initial effort understand technology create design technology implement system	Compare maintainability of different persistency techniques from the software development and maintenance team point of view	{'1': 'Cumulative flow diagram', '2': 'Number of workarounds', '3': 'Task completion time'}
+16	effort implement part system	Compare maintainability of different persistency techniques from the software development and maintenance team point of view	{'1': 'Task completion time'}
+17	big effort extend persistency layer new persistent class include incorporation exist object model	Compare maintainability of different persistency techniques from the software development and maintenance team point of view	{'1': 'Average time to conduct the change', '2': 'Number of files that need to be changed', '3': 'Number of tests'}
+18	big effort modify extend business facade functionality	Compare maintainability of different persistency techniques from the software development and maintenance team point of view	{'1': 'Average time to conduct the change', '2': 'Number of files that need to be changed', '3': 'Number of tests'}
+19	big effort conduct change within scenario	Compare maintainability of different persistency techniques from the software development and maintenance team point of view	{'1': 'Average time to conduct the change', '2': 'Number of files that need to be changed', '3': 'Number of tests'}
+20	impact choice persistency technique start performance application	Compare performance of different persistency techniques from the software development and maintenance team point of view	{'1': 'App initial memory footprint', '2': 'Initialization time'}
+21	specific performance characteristic persistency system application	Compare performance of different persistency techniques from the software development and maintenance team point of view	{'1': 'App CPU utilization', '2': 'DB CPU utilization', '3': 'Memory utilization', '4': 'Task completion time'}
+22	good responsiveness system client view	Compare performance of different persistency techniques from the software development and maintenance team point of view	{'1': 'Response time'}
+23	good responsiveness system client view object model navigation use within facade	Compare performance of different persistency techniques from the software development and maintenance team point of view	{'1': 'Response time'}
+24	level collaboration customer	More effective effort estimation	{'1': 'Class length', '2': 'Coupling', '3': 'Defect density', '4': 'Method length', '5': 'Number of defects', '6': 'Number of detected defects', '7': 'Number of unresolved defects'}
+25	adherent project original plan	More effective effort estimation	{'1': 'Average cycle time', '2': 'Cumulative flow diagram', '3': 'Effort estimation accuracy', '4': 'Iteration burndown chart', '5': 'Percentage of feature cut', '6': 'Release burndown chart', '7': 'Task completion time', '8': 'Variance'}
+26	many feature implement far	More effective effort estimation	{'1': 'Cumulative flow diagram', '2': 'Iteration burndown chart', '3': 'Percentage of feature cut', '4': 'Release burndown chart'}
+27	quality project	More effective effort estimation	{'1': 'Class length', '2': 'Code coverage', '3': 'Coupling', '4': 'Defect density', '5': 'Defect removal efficiency', '6': 'Method length', '7': 'Number of defects', '8': 'Number of detected defects', '9': 'Number of unresolved defects', '10': 'Percentage of passed tests'}
+28	consumption resource adherent budget	More effective effort estimation	{'1': 'Average cycle time', '2': 'Cumulative flow diagram', '3': 'Effort estimation accuracy', '4': 'Iteration burndown chart', '5': 'Percentage of feature cut', '6': 'Release burndown chart', '7': 'Task completion time', '8': 'Variance'}
+33	complexity	Comprehensibility	{'1': 'Cyclomatic complexity'}
+34	cohesion	Manageability	{'1': 'Cohesion'}
+35	couple	Manageability	{'1': 'Coupling'}
+36	cohesion	Maintainability	{'1': 'Cohesion'}
+37	couple	Maintainability	{'1': 'Coupling'}
+38	speedup	Scalability	{'1': 'Cumulative flow diagram'}
+39	efficiency	Scalability	{'1': 'Response time'}
+40	scalability	Scalability	{'1': 'Productivity'}
+41	complexity	Testability	{'1': 'Cyclomatic complexity'}
+42	couple	Testability	{'1': 'Coupling'}
+43	size	Testability	{'1': 'LOC'}
+44	cohesion	Testability	{'1': 'Cohesion'}
+45	couple	Reusability	{'1': 'Coupling'}
+46	size	Reusability	{'1': 'LOC'}
+47	cost	Reusability	{'1': 'Cost'}
+48	complexity	Usability	{'1': 'Cyclomatic complexity'}
+50	precise complete treatment group task list compare control group task list	Empirically evaluate the differences between automatically derived task lists and manually created ones.	{'1': 'F-1 score'}
+51	precise application analyze data	Create an A/V tracker	{'1': 'F-1 score'}
+52	much resource save	Create an A/V tracker	{'1': 'App CPU utilization', '2': 'GPU load', '3': 'Memory utilization'}
+53	quality system	Create an A/V tracker	{'1': 'Class length', '2': 'Code coverage', '3': 'Cohesion', '4': 'Coupling', '5': 'Defect density', '6': 'Number of detected defects', '7': 'Number of unresolved defects', '8': 'Percentage of passed tests'}
+54	precise evaluation	Develop an algorithm to evaluate collected system metrics	{'1': 'F-1 score'}
+55	amount data sufficient evaluation	Develop an algorithm to evaluate collected system metrics	{'1': 'Memory utilization'}
+56	much resource system us	Minimize amount of resource utilization	{'1': 'App CPU utilization', '2': 'DB CPU utilization', '3': 'F-1 score', '4': 'Memory utilization'}
+57	level system responsiveness	Create an A/V tracker	{'1': 'Response time'}
+60	reach target productivity level	"Develop ""Metrics Recommender"""	{'1': 'Average cycle time', '2': 'Cumulative flow diagram', '3': 'Iteration burndown chart', '4': 'Release burndown chart', '5': 'Task completion time'}
+61	increase complexity	"Develop ""Metrics Recommender"""	{'1': 'Cyclomatic complexity'}
+62	precise result	"Develop ""Metrics Recommender"""	{'1': 'F-1 score'}
+63	avoid unpredictable behavior	Make the system reliable	{'1': 'Cyclomatic complexity', '2': 'Number of defects', '3': 'Number of faults', '4': 'Number of warnings'}
+64	precise recognition model	Develop a tool to keep track of students' attention	{'1': 'F-1 score'}
+65	performance recognition model	Develop a tool to keep track of students' attention	{'1': 'App CPU utilization', '2': 'GPU load', '3': 'Memory utilization'}
+66	satisfy customer requirement	Develop a tool to keep track of students' attention	{'1': 'Cost', '2': 'Cumulative flow diagram', '3': 'Iteration burndown chart', '4': 'Release burndown chart', '5': 'Subjective evaluation', '6': 'Task completion time'}
+67	accurate track	Track and record data from I/O devices	{'1': 'F-1 score', '2': 'Response time'}
+68	much effort need commit project	Create a cross-platform application till the deadline	{'1': 'Task completion time', '2': 'Testing effort'}
+69	much progress already make	Create a cross-platform application till the deadline	{'1': 'Cumulative flow diagram', '2': 'Release burndown chart'}
+71	deal high system workload	Rebuild a website for courses placement	{}
+72	effort use approach	Evaluate the use of exploratory testing and the use of model-based testing in feature testing for mobile phone applications	{'1': 'Testing effort'}
+73	efficient approach	Evaluate the use of exploratory testing and the use of model-based testing in feature testing for mobile phone applications	{'1': 'Number of detected faults', '2': 'Testing effort'}
+74	relevant detect fault follow approach	Evaluate the use of exploratory testing and the use of model-based testing in feature testing for mobile phone applications	{'1': 'Fault relevance', '2': 'Number of detected faults'}
+75	approach find fault	Evaluate the use of exploratory testing and the use of model-based testing in feature testing for mobile phone applications	{'1': 'Number of detected faults'}

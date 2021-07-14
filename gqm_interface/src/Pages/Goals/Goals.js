@@ -66,7 +66,8 @@ function Goals(props){
             <MainBlock>
                 <h1 className="GoalsHeader">Goals</h1>
                 <ol className="GoalsList">
-                    {goals.map(goal => {
+                    {goals.length ?
+                        goals.map(goal => {
                         return (
                             <Item
                                 clicked={() => goalClicked(goal.id)}
@@ -74,7 +75,10 @@ function Goals(props){
                                 delete={() => deleteClicked(goal)}
                             />
                         )
-                    })}
+                        })
+                        :
+                        null
+                    }
                 </ol>
                 {isAddGoal ?
                     <div className="NewGoalContainer">

@@ -34,9 +34,22 @@ This is the system to recommend metrics based on the GQM model
 
     |username|password|
     |-----|--------|
+    |.sof142|fascinating|
+    |-172|flower|
+    |1497412|sweater|
+    |2688043|teapot|
+    |1368143|bookshelf|
+    |3275530|whiteboard|
+    |1294926|pillow|
+    |1404898|pencil|
+    |2737198|bottle|
+
+    |username|password|
+    |-----|--------|
     |Marina|password|
     |Kirill|abc123| 
     |Anna|sunshine|
     |Artem|qwerty|
     |Max|12345|
+    |Lesha|98765|
 * Or you can register and create your own goals, questions and metrics.
