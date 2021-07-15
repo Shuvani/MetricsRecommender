@@ -218,9 +218,8 @@ class QuestionMetricsAssignAPIView(APIView):
         """API endpoint to generate metrics and assign them to the question"""
         question = Question.objects.filter(id=question_id)
         content = question.values()[0].get('content')
-        data = {'metrics': ['Lines of code', 'Program vocabulary', 'Errors per LOC',
-                            'Pages of documentation per KLOC', 'Cost of quality',
-                            'Team velocity', 'Open-close']}
+        data = {'metrics': ['Cumulative flow diagram', 'Iteration burndown chart', 'LOC',
+                            'Average cycle time', 'Cost', 'Code coverage']}
         serializer = QuestionSerializer(question.first(), data=data, partial=True)
         if serializer.is_valid():
             serializer.save()

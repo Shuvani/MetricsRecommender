@@ -15,6 +15,7 @@ from sklearn.metrics import hamming_loss
 from sklearn.metrics import accuracy_score
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MultiLabelBinarizer
@@ -22,6 +23,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 from skmultilearn.adapt import MLkNN
 from skmultilearn.ensemble import RakelD
+from skmultilearn.problem_transform import LabelPowerset
 from skmultilearn.problem_transform import BinaryRelevance
 from skmultilearn.problem_transform import ClassifierChain
 
@@ -35,6 +37,21 @@ PATH = 'MetricsRecommender/gqm_api/questions.tsv'
 PATH_TO_CSV = 'MetricsRecommender/gqm_api/questions.csv'
 stopwords = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
+
+classifiers = {
+        "Binary relevance ": BinaryRelevance(GaussianNB()),
+        "Classifier chains ": ClassifierChain(GaussianNB()),
+        "Label powerset ": LabelPowerset(
+            classifier = RandomForestClassifier(),
+            require_dense = [False, True]
+        ),
+        "RAkEL ": RakelD(
+            base_classifier=GaussianNB(),
+            base_classifier_require_dense=[True, True],
+            labelset_size=52
+        ),
+        "Decision trees ": DecisionTreeClassifier()
+    }
 
 
 def clean_text(text):
@@ -147,7 +164,8 @@ def make_predictions(x_train, y_train, x_test, y_test, classifier, text):
 
 
 def knn(x_train, y_train, x_test, y_test):
-    classifier = MLkNN(k=3)
+    parameters = {'k': range(1, 3), 's': [0.5, 0.7, 1.0]}
+    classifier = GridSearchCV(MLkNN(), parameters, scoring='f1_micro')
     # to prevent errors when handling sparse matrices.
     x_train = lil_matrix(x_train).toarray()
     y_train = lil_matrix(y_train).toarray()
@@ -179,20 +197,6 @@ def create_metrics(content, question_id):
     # vectorization
     x_train, x_test = vectorization(x_train, x_test)
     # make predictions
-    classifiers = {
-        "Binary relevance ": BinaryRelevance(GaussianNB()),
-        "Classifier chains ": ClassifierChain(GaussianNB()),
-        "Label powerset ": ClassifierChain(
-            classifier=RandomForestClassifier(n_estimators=100),
-            require_dense=[False, True]
-        ),
-        "RAkEL ": RakelD(
-            base_classifier=GaussianNB(),
-            base_classifier_require_dense=[True, True],
-            labelset_size=52
-        ),
-        "Decision trees ": DecisionTreeClassifier()
-    }
     for text, classifier in classifiers.items():
         make_predictions(x_train, y_train, x_test, y_test, classifier, text)
     knn(x_train, y_train, x_test, y_test)

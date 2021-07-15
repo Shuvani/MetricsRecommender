@@ -46,7 +46,6 @@
 51	precise application analyze data	Create an A/V tracker	{'1': 'F-1 score'}
 52	much resource save	Create an A/V tracker	{'1': 'App CPU utilization', '2': 'GPU load', '3': 'Memory utilization'}
 53	quality system	Create an A/V tracker	{'1': 'Class length', '2': 'Code coverage', '3': 'Cohesion', '4': 'Coupling', '5': 'Defect density', '6': 'Number of detected defects', '7': 'Number of unresolved defects', '8': 'Percentage of passed tests'}
-54	precise evaluation	Develop an algorithm to evaluate collected system metrics	{'1': 'F-1 score'}
 55	amount data sufficient evaluation	Develop an algorithm to evaluate collected system metrics	{'1': 'Memory utilization'}
 56	much resource system us	Minimize amount of resource utilization	{'1': 'App CPU utilization', '2': 'DB CPU utilization', '3': 'F-1 score', '4': 'Memory utilization'}
 57	level system responsiveness	Create an A/V tracker	{'1': 'Response time'}
@@ -65,3 +64,4 @@
 73	efficient approach	Evaluate the use of exploratory testing and the use of model-based testing in feature testing for mobile phone applications	{'1': 'Number of detected faults', '2': 'Testing effort'}
 74	relevant detect fault follow approach	Evaluate the use of exploratory testing and the use of model-based testing in feature testing for mobile phone applications	{'1': 'Fault relevance', '2': 'Number of detected faults'}
 75	approach find fault	Evaluate the use of exploratory testing and the use of model-based testing in feature testing for mobile phone applications	{'1': 'Number of detected faults'}
+76	many effort need extend functionality website	Rebuild a website for courses placement	{'1': 'Average time to conduct the change', '2': 'Number of files that need to be changed'}

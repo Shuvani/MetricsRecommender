@@ -10,8 +10,9 @@ from nltk.corpus import wordnet
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import MultiLabelBinarizer
+from skmultilearn.problem_transform import LabelPowerset
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 from scipy.sparse import lil_matrix
@@ -119,13 +120,15 @@ def vectorization(x_train, x_test):
     return x_train, x_test
 
 
-def decision_trees(x_train, y_train, x_test):
-    classifier = DecisionTreeClassifier()
+def labeled_powerset(x_train, y_train, x_test):
+    classifier = LabelPowerset(
+            classifier=RandomForestClassifier(),
+            require_dense=[False, True]
+        )
     classifier.fit(x_train, y_train)
     # predict
     predictions = classifier.predict(x_test)
-    print(predictions[0])
-    return predictions
+    return predictions.toarray()
 
 
 def create_metrics(content, question_id):
@@ -150,7 +153,7 @@ def create_metrics(content, question_id):
     # vectorization
     x_train, x_test = vectorization(x_train, x_test)
     # decision trees
-    predictions = decision_trees(x_train, y_train, x_test)
+    predictions = labeled_powerset(x_train, y_train, x_test)
     # map array of 0 and 1 into metrics names
     metrics_names = dataset.columns[5:]
     metrics = []
