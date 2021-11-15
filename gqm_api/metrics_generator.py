@@ -10,10 +10,12 @@ from nltk.corpus import wordnet
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
+from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import MultiLabelBinarizer
 from skmultilearn.problem_transform import LabelPowerset
 from sklearn.feature_extraction.text import TfidfVectorizer
+from skmultilearn.problem_transform import BinaryRelevance
 
 from scipy.sparse import lil_matrix
 
@@ -120,11 +122,8 @@ def vectorization(x_train, x_test):
     return x_train, x_test
 
 
-def labeled_powerset(x_train, y_train, x_test):
-    classifier = LabelPowerset(
-            classifier=RandomForestClassifier(),
-            require_dense=[False, True]
-        )
+def binary_relevance(x_train, y_train, x_test):
+    classifier = BinaryRelevance(GaussianNB())
     classifier.fit(x_train, y_train)
     # predict
     predictions = classifier.predict(x_test)
@@ -153,7 +152,7 @@ def create_metrics(content, question_id):
     # vectorization
     x_train, x_test = vectorization(x_train, x_test)
     # decision trees
-    predictions = labeled_powerset(x_train, y_train, x_test)
+    predictions = binary_relevance(x_train, y_train, x_test)
     # map array of 0 and 1 into metrics names
     metrics_names = dataset.columns[5:]
     metrics = []

@@ -38,7 +38,7 @@ urlpatterns = [
     # url(r'^metrics/(?P<pk>[0-9]+)$', MetricsDetailAPIView.as_view()),  # get metrics for question
     url(r'^question/generate-metrics/(?P<question_id>[0-9]+)$', QuestionMetricsGenerateAPIView.as_view()),  # generate metrics
     url(r'^question/assign-metrics/(?P<question_id>[0-9]+)$', QuestionMetricsAssignAPIView.as_view()),  # precooked metrics
-url(r'^question/save-metrics/(?P<question_id>[0-9]+)$', QuestionMetricsSaveAPIView.as_view()),  # metrics chosen by hand
+    url(r'^question/save-metrics/(?P<question_id>[0-9]+)$', QuestionMetricsSaveAPIView.as_view()),  # metrics chosen by hand
     # url(r'^question/text-metrics/(?P<question_id>[0-9]+)$', QuestionGetAPIView.as_view()),
     # url(r'^users/goals/(?P<user_id>[0-9]+)$', UserGoalsListAPIView.as_view()),
 ]

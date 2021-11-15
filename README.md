@@ -29,27 +29,16 @@ This is the system to recommend metrics based on the GQM model
    ``` 
    
 ### How to use
+1) Login into the system. If you do not have an account - register.
+2) Enter your progect goal
+3) Click on the goal and enter questions
+4) Click on question and choose an action: generate automatically, use the pre-cooked set or choose appropriate metrics by yourself
 
-* You can login with one of this credentials if you want to see the existed data:
+### Admin account
 
-    |username|password|
-    |-----|--------|
-    |.sof142|fascinating|
-    |-172|flower|
-    |1497412|sweater|
-    |2688043|teapot|
-    |1368143|bookshelf|
-    |3275530|whiteboard|
-    |1294926|pillow|
-    |1404898|pencil|
-    |2737198|bottle|
+login: admin
 
-    |username|password|
-    |-----|--------|
-    |Marina|password|
-    |Kirill|abc123| 
-    |Anna|sunshine|
-    |Artem|qwerty|
-    |Max|12345|
-    |Lesha|98765|
-* Or you can register and create your own goals, questions and metrics.
+password: admin
+
+- You can find the dataset on MetricsRecommender/gqm_api/questions.csv
+- Run the statistics collection on the dataset you can by running MetricsRecommender/gqm_api/statistics_collection.py

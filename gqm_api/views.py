@@ -139,37 +139,6 @@ class MetricsDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = MetricsSerializer
 
 
-# class QuestionMetricsCreateAPIView(APIView):
-#     content = openapi.Parameter('content',
-#                                 openapi.IN_BODY,
-#                                 type=openapi.TYPE_STRING
-#                                 )
-#     goal_id = openapi.Parameter('goal_id',
-#                                 openapi.IN_BODY,
-#                                 type=openapi.TYPE_INTEGER
-#                                 )
-#
-#     @swagger_auto_schema(request_body=openapi.Schema(type=openapi.TYPE_OBJECT,
-#                                                      required=['content', 'goal_id'],
-#                                                      properties={
-#                                                          'content': openapi.Schema(type=openapi.TYPE_STRING),
-#                                                          'goal_id': openapi.Schema(type=openapi.TYPE_INTEGER)
-#                                                      },
-#                                                      ),
-#                          operation_description='Uninstall a version of Site')
-#     def post(self, request):
-#         """API endpoint to create a new question and automatically assign metrics."""
-#         content = request.data.get('content')
-#         goal_id = request.data.get('goal_id')
-#         metrics = create_metrics(content)
-#         data = {'content': content, 'goal_id': goal_id, 'metrics': metrics}
-#         serializer = QuestionSerializer(data=data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
 class QuestionGetAPIView(APIView):
 
     def get(self, request, question_id):
@@ -188,13 +157,6 @@ class QuestionGetAPIView(APIView):
         ser.save()
         ser.metrics.set([metrics_names])
         return Response(ser, status=status.HTTP_201_CREATED)
-        # serializer = CustomQuestionSerializer(data=data)
-        # if serializer.is_valid():
-        #     print('znen')
-        #     serializer.save()
-        #     serializer.metrics.set([metrics_names])
-        #     return Response(serializer.data, status=status.HTTP_201_CREATED)
-        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class QuestionMetricsGenerateAPIView(APIView):
@@ -218,8 +180,7 @@ class QuestionMetricsAssignAPIView(APIView):
         """API endpoint to generate metrics and assign them to the question"""
         question = Question.objects.filter(id=question_id)
         content = question.values()[0].get('content')
-        data = {'metrics': ['Cumulative flow diagram', 'Iteration burndown chart', 'LOC',
-                            'Average cycle time', 'Cost', 'Code coverage']}
+        data = {'metrics': ['Time', 'Number of people', 'Money']}
         serializer = QuestionSerializer(question.first(), data=data, partial=True)
         if serializer.is_valid():
             serializer.save()

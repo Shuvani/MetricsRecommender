@@ -3,7 +3,6 @@ import csv
 import nltk
 import json
 import pandas as pd
-from .models import Question
 from scipy.sparse import lil_matrix
 
 from nltk.corpus import wordnet
@@ -15,7 +14,6 @@ from sklearn.metrics import hamming_loss
 from sklearn.metrics import accuracy_score
 from sklearn.naive_bayes import GaussianNB
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MultiLabelBinarizer
@@ -23,7 +21,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 from skmultilearn.adapt import MLkNN
 from skmultilearn.ensemble import RakelD
-from skmultilearn.problem_transform import LabelPowerset
 from skmultilearn.problem_transform import BinaryRelevance
 from skmultilearn.problem_transform import ClassifierChain
 
@@ -37,21 +34,6 @@ PATH = 'MetricsRecommender/gqm_api/questions.tsv'
 PATH_TO_CSV = 'MetricsRecommender/gqm_api/questions.csv'
 stopwords = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
-
-classifiers = {
-        "Binary relevance ": BinaryRelevance(GaussianNB()),
-        "Classifier chains ": ClassifierChain(GaussianNB()),
-        "Label powerset ": LabelPowerset(
-            classifier = RandomForestClassifier(),
-            require_dense = [False, True]
-        ),
-        "RAkEL ": RakelD(
-            base_classifier=GaussianNB(),
-            base_classifier_require_dense=[True, True],
-            labelset_size=52
-        ),
-        "Decision trees ": DecisionTreeClassifier()
-    }
 
 
 def clean_text(text):
@@ -164,8 +146,7 @@ def make_predictions(x_train, y_train, x_test, y_test, classifier, text):
 
 
 def knn(x_train, y_train, x_test, y_test):
-    parameters = {'k': range(1, 3), 's': [0.5, 0.7, 1.0]}
-    classifier = GridSearchCV(MLkNN(), parameters, scoring='f1_micro')
+    classifier = MLkNN(k=3)
     # to prevent errors when handling sparse matrices.
     x_train = lil_matrix(x_train).toarray()
     y_train = lil_matrix(y_train).toarray()
@@ -180,24 +161,30 @@ def knn(x_train, y_train, x_test, y_test):
                  )
 
 
-def create_metrics(content, question_id):
-    questions = Question.objects.all()  # get all questions and all metrics assigned to them
-    # text preprocessing
-    for item in questions:
-        item.content = clean_text(item.content)
-        item.content = lemmatization(item.content)
-    questions = list(map(lambda x: create_dictionary(x), questions))  # transform QuerySet into list of dictionaries
-    # create tsv file
-    # if not os.path.exists(BASE_PATH + PATH):
-    create_csv(questions, BASE_PATH + PATH)
-    # putting tags variable into separate binary columns
+def create_statistics():
     dataset = binarization(pd.read_csv(BASE_PATH + PATH, sep='\t', header=None))
     x_train, x_test, y_train, y_test = train_test_split(
-        dataset['content'], dataset[dataset.columns[5:]], test_size=0.2, random_state=0)
+        dataset['content'], dataset[dataset.columns[5:]], test_size=0.1, random_state=0)
     # vectorization
     x_train, x_test = vectorization(x_train, x_test)
     # make predictions
+    classifiers = {
+        "Binary relevance ": BinaryRelevance(GaussianNB()),
+        "Classifier chains ": ClassifierChain(GaussianNB()),
+        "Label powerset ": ClassifierChain(
+            classifier=RandomForestClassifier(n_estimators=100),
+            require_dense=[False, True]
+        ),
+        "RAkEL ": RakelD(
+            base_classifier=GaussianNB(),
+            base_classifier_require_dense=[True, True],
+            labelset_size=52
+        ),
+        "Decision trees ": DecisionTreeClassifier()
+    }
     for text, classifier in classifiers.items():
         make_predictions(x_train, y_train, x_test, y_test, classifier, text)
     knn(x_train, y_train, x_test, y_test)
     return []
+
+create_statistics()

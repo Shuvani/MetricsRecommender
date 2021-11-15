@@ -1,68 +1,65 @@
-,id,content,goal_id,metrics,App CPU utilization,App initial memory footprint,Average cycle time,Average cycle time excess,Average time to conduct the change,Class length,Code coverage,Cohesion,Cost,Coupling,Cumulative flow diagram,Cycle time improvements,Cyclomatic complexity,DB CPU utilization,Defect density,Defect removal efficiency,Effort estimation accuracy,F-1 score,Fault relevance,GPU load,Initialization time,Iteration burndown chart,LOC,Marginal costs,Mean time to quality repair,Memory utilization,Method length,Number of defects,Number of detected defects,Number of detected faults,Number of exceptions,Number of faults,Number of files that need to be changed,Number of tests,Number of unresolved defects,Number of warnings,Number of workarounds,Percentage of cases outside the upper limit,Percentage of feature cut,Percentage of passed tests,Productivity,Release burndown chart,Resource provisioning efficiency,Response time,Scalability range,Scalability speed,Screen duration,Standard deviation,Subjective evaluation,Task completion time,Testing effort,Variance
-0,1,current change request processing speed,Improve the timeliness of change request processing from the project manager's viewpoint,"['Average cycle time', 'Percentage of cases outside the upper limit', 'Standard deviation']",0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0
-1,2,performance process improve,Improve the timeliness of change request processing from the project manager's viewpoint,['Average cycle time excess'],0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-2,3,change request process actually perform,Improve the timeliness of change request processing from the project manager's viewpoint,"['Number of exceptions', 'Subjective evaluation']",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
-3,4,deviation actual change request processing time estimate one,Improve the timeliness of change request processing from the project manager's viewpoint,"['Cycle time improvements', 'Subjective evaluation']",0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
-4,5,current performance satisfactory viewpoint project manager,Improve the timeliness of change request processing from the project manager's viewpoint,['Subjective evaluation'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0
-5,6,performance visibly improve,Improve the timeliness of change request processing from the project manager's viewpoint,['Average cycle time excess'],0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-6,7,many unwanted behavior,Analyze the software product with respect to its quality for the purpose of characterization from the developer's point of view,"['Number of faults', 'Number of warnings']",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-7,8,quality test,Analyze the software product with respect to its quality for the purpose of characterization from the developer's point of view,['Code coverage'],0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-8,9,user learn design quickly perform task,Efficiency,"['Screen duration', 'Task completion time']",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0
-9,10,system fulfill requirement workload increase,Analyze the scalability of cloud computing system designs from a software architect's viewpoint,"['Scalability range', 'Scalability speed']",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0
-10,11,often system violate requirement workload x time period,Analyze the elasticity of cloud computing system designs from a software architect's viewpoint,['Number of defects'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-11,12,point system violates requirement long take system recovers state requirement met,Analyze the elasticity of cloud computing system designs from a software architect's viewpoint,['Mean time to quality repair'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-12,13,close actual resource demand system align resource provision,Analyze the efficiency of cloud computing system designs from a software architect's viewpoint,['Resource provisioning efficiency'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0
-13,14,amount resource autonomously provision system give workload x,Analyze the efficiency of cloud computing system designs from a software architect's viewpoint,['Marginal costs'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-14,15,big initial effort understand technology create design technology implement system,Compare maintainability of different persistency techniques from the software development and maintenance team point of view,"['Cumulative flow diagram', 'Number of workarounds', 'Task completion time']",0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
-15,16,effort implement part system,Compare maintainability of different persistency techniques from the software development and maintenance team point of view,['Task completion time'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
-16,17,big effort extend persistency layer new persistent class include incorporation exist object model,Compare maintainability of different persistency techniques from the software development and maintenance team point of view,"['Average time to conduct the change', 'Number of files that need to be changed', 'Number of tests']",0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-17,18,big effort modify extend business facade functionality,Compare maintainability of different persistency techniques from the software development and maintenance team point of view,"['Average time to conduct the change', 'Number of files that need to be changed', 'Number of tests']",0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-18,19,big effort conduct change within scenario,Compare maintainability of different persistency techniques from the software development and maintenance team point of view,"['Average time to conduct the change', 'Number of files that need to be changed', 'Number of tests']",0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-19,20,impact choice persistency technique start performance application,Compare performance of different persistency techniques from the software development and maintenance team point of view,"['App initial memory footprint', 'Initialization time']",0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-20,21,specific performance characteristic persistency system application,Compare performance of different persistency techniques from the software development and maintenance team point of view,"['App CPU utilization', 'DB CPU utilization', 'Memory utilization', 'Task completion time']",1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
-21,22,good responsiveness system client view,Compare performance of different persistency techniques from the software development and maintenance team point of view,['Response time'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
-22,23,good responsiveness system client view object model navigation use within facade,Compare performance of different persistency techniques from the software development and maintenance team point of view,['Response time'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
-23,24,level collaboration customer,More effective effort estimation,"['Class length', 'Coupling', 'Defect density', 'Method length', 'Number of defects', 'Number of detected defects', 'Number of unresolved defects']",0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-24,25,adherent project original plan,More effective effort estimation,"['Average cycle time', 'Cumulative flow diagram', 'Effort estimation accuracy', 'Iteration burndown chart', 'Percentage of feature cut', 'Release burndown chart', 'Task completion time', 'Variance']",0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1,0,1
-25,26,many feature implement far,More effective effort estimation,"['Cumulative flow diagram', 'Iteration burndown chart', 'Percentage of feature cut', 'Release burndown chart']",0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0
-26,27,quality project,More effective effort estimation,"['Class length', 'Code coverage', 'Coupling', 'Defect density', 'Defect removal efficiency', 'Method length', 'Number of defects', 'Number of detected defects', 'Number of unresolved defects', 'Percentage of passed tests']",0,0,0,0,0,1,1,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
-27,28,consumption resource adherent budget,More effective effort estimation,"['Average cycle time', 'Cumulative flow diagram', 'Effort estimation accuracy', 'Iteration burndown chart', 'Percentage of feature cut', 'Release burndown chart', 'Task completion time', 'Variance']",0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1,0,1
-28,33,complexity,Comprehensibility,['Cyclomatic complexity'],0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-29,34,cohesion,Manageability,['Cohesion'],0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-30,35,couple,Manageability,['Coupling'],0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-31,36,cohesion,Maintainability,['Cohesion'],0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-32,37,couple,Maintainability,['Coupling'],0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-33,38,speedup,Scalability,['Cumulative flow diagram'],0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-34,39,efficiency,Scalability,['Response time'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
-35,40,scalability,Scalability,['Productivity'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0
-36,41,complexity,Testability,['Cyclomatic complexity'],0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-37,42,couple,Testability,['Coupling'],0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-38,43,size,Testability,['LOC'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-39,44,cohesion,Testability,['Cohesion'],0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-40,45,couple,Reusability,['Coupling'],0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-41,46,size,Reusability,['LOC'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-42,47,cost,Reusability,['Cost'],0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-43,48,complexity,Usability,['Cyclomatic complexity'],0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-44,50,precise complete treatment group task list compare control group task list,Empirically evaluate the differences between automatically derived task lists and manually created ones.,['F-1 score'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-45,51,precise application analyze data,Create an A/V tracker,['F-1 score'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-46,52,much resource save,Create an A/V tracker,"['App CPU utilization', 'GPU load', 'Memory utilization']",1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-47,53,quality system,Create an A/V tracker,"['Class length', 'Code coverage', 'Cohesion', 'Coupling', 'Defect density', 'Number of detected defects', 'Number of unresolved defects', 'Percentage of passed tests']",0,0,0,0,0,1,1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0
-48,55,amount data sufficient evaluation,Develop an algorithm to evaluate collected system metrics,['Memory utilization'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-49,56,much resource system us,Minimize amount of resource utilization,"['App CPU utilization', 'DB CPU utilization', 'F-1 score', 'Memory utilization']",1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-50,57,level system responsiveness,Create an A/V tracker,['Response time'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
-51,60,reach target productivity level,"Develop ""Metrics Recommender""","['Average cycle time', 'Cumulative flow diagram', 'Iteration burndown chart', 'Release burndown chart', 'Task completion time']",0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0
-52,61,increase complexity,"Develop ""Metrics Recommender""",['Cyclomatic complexity'],0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-53,62,precise result,"Develop ""Metrics Recommender""",['F-1 score'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-54,63,avoid unpredictable behavior,Make the system reliable,"['Cyclomatic complexity', 'Number of defects', 'Number of faults', 'Number of warnings']",0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-55,64,precise recognition model,Develop a tool to keep track of students' attention,['F-1 score'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-56,65,performance recognition model,Develop a tool to keep track of students' attention,"['App CPU utilization', 'GPU load', 'Memory utilization']",1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-57,66,satisfy customer requirement,Develop a tool to keep track of students' attention,"['Cost', 'Cumulative flow diagram', 'Iteration burndown chart', 'Release burndown chart', 'Subjective evaluation', 'Task completion time']",0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,1,0,0
-58,67,accurate track,Track and record data from I/O devices,"['F-1 score', 'Response time']",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0
-59,68,much effort need commit project,Create a cross-platform application till the deadline,"['Task completion time', 'Testing effort']",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0
-60,69,much progress already make,Create a cross-platform application till the deadline,"['Cumulative flow diagram', 'Release burndown chart']",0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
-61,71,deal high system workload,Rebuild a website for courses placement,[],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-62,72,effort use approach,Evaluate the use of exploratory testing and the use of model-based testing in feature testing for mobile phone applications,['Testing effort'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
-63,73,efficient approach,Evaluate the use of exploratory testing and the use of model-based testing in feature testing for mobile phone applications,"['Number of detected faults', 'Testing effort']",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0
-64,74,relevant detect fault follow approach,Evaluate the use of exploratory testing and the use of model-based testing in feature testing for mobile phone applications,"['Fault relevance', 'Number of detected faults']",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-65,75,approach find fault,Evaluate the use of exploratory testing and the use of model-based testing in feature testing for mobile phone applications,['Number of detected faults'],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-66,76,many effort need extend functionality website,Rebuild a website for courses placement,"['Average time to conduct the change', 'Number of files that need to be changed']",0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+,id,content,goal_id,metrics,Accuracy,Complexity,Execution time,LOC,Money,Number of bugs,Number of functions,Number of issues,Number of people,Number of reviews,Test coverage,Time
+0,1,long development process take,Study a program development process,['Time'],0,0,0,0,0,0,0,0,0,0,0,1
+1,2,many developer want,Study a program development process,['Number of people'],0,0,0,0,0,0,0,0,1,0,0,0
+2,3,deadline,Study a program development process,['Time'],0,0,0,0,0,0,0,0,0,0,0,1
+3,4,cost,Study a program development process,['Money'],0,0,0,0,1,0,0,0,0,0,0,0
+4,5,effective code review find bug pass development stage,Identify if frequent code reviews help to discover more bugs,['Number of bugs'],0,0,0,0,0,1,0,0,0,0,0,0
+5,6,effective code review prevention passing bug customer,Identify if frequent code reviews help to discover more bugs,['Number of bugs'],0,0,0,0,0,1,0,0,0,0,0,0
+6,7,effective code review bug find compare absence code review,Identify if frequent code reviews help to discover more bugs,['Number of bugs'],0,0,0,0,0,1,0,0,0,0,0,0
+7,8,improve quality code review,Decrease the amount of bugs in the code,"['Number of bugs', 'Number of people']",0,0,0,0,0,1,0,0,1,0,0,0
+8,9,long code review last,Identify if frequent code reviews help to discover more bugs,['Time'],0,0,0,0,0,0,0,0,0,0,0,1
+9,10,many people review code,Identify if frequent code reviews help to discover more bugs,['Number of people'],0,0,0,0,0,0,0,0,1,0,0,0
+10,11,developer interaction project,Observing most engaging developers,"['Number of issues', 'Number of reviews']",0,0,0,0,0,0,0,1,0,1,0,0
+11,12,quality work perform,Assess the productivity of software developers,['Number of bugs'],0,0,0,0,0,1,0,0,0,0,0,0
+12,13,quality software,Estimate quality of a software,"['Number of bugs', 'Test coverage']",0,0,0,0,0,1,0,0,0,0,1,0
+13,14,much budget need construct mvp,Create the library management application,['Money'],0,0,0,0,1,0,0,0,0,0,0,0
+14,15,many people need get involve,Create the library management application,['Number of people'],0,0,0,0,0,0,0,0,1,0,0,0
+15,16,much time take,Create the library management application,['Time'],0,0,0,0,0,0,0,0,0,0,0,1
+16,17,number function lead cleaner code,Develop cleaner code,['Number of functions'],0,0,0,0,0,0,1,0,0,0,0,0
+17,18,take break hour increase productivity,Increase the number of lines of code written in a month,['LOC'],0,0,0,1,0,0,0,0,0,0,0,0
+18,19,work hour per day increase productivity developer,Increase the number of lines of code written in a month,['LOC'],0,0,0,1,0,0,0,0,0,0,0,0
+19,20,kind neural network need use,Creating face detection and recognition computer vision application with an attendance check system,['Accuracy'],1,0,0,0,0,0,0,0,0,0,0,0
+20,21,much time require,Creating face detection and recognition computer vision application with an attendance check system,['Execution time'],0,0,1,0,0,0,0,0,0,0,0,0
+21,22,understand user story test,Analyze the code coverage of login feature,['Test coverage'],0,0,0,0,0,0,0,0,0,0,1,0
+22,23,quality software test,Measure the technical quality of object-oriented software product in the company,"['LOC', 'Number of bugs']",0,0,0,1,0,1,0,0,0,0,0,0
+23,24,complex software,Measure the technical quality of object-oriented software product in the company,['Complexity'],0,1,0,0,0,0,0,0,0,0,0,0
+24,25,software already,Fix the most bugs in the code,"['LOC', 'Number of bugs']",0,0,0,1,0,1,0,0,0,0,0,0
+25,26,many line code,Find bugs and clear them from our program,['LOC'],0,0,0,1,0,0,0,0,0,0,0,0
+26,27,many developer work program,Find bugs and clear them from our program,['Number of people'],0,0,0,0,0,0,0,0,1,0,0,0
+27,28,many error satisfactory,Find bugs and clear them from our program,['Number of bugs'],0,0,0,0,0,1,0,0,0,0,0,0
+28,29,line affect number defect code,Inspect the relationship between the number of defects and day time,"['LOC', 'Number of bugs', 'Time']",0,0,0,1,0,1,0,0,0,0,0,1
+29,30,quality code,Verify that in the most used scenarios our module behaves as intended,"['Number of bugs', 'Test coverage']",0,0,0,0,0,1,0,0,0,0,1,0
+30,31,many code,Code without bugs,['LOC'],0,0,0,1,0,0,0,0,0,0,0,0
+31,32,many bug,Code without bugs,['Number of bugs'],0,0,0,0,0,1,0,0,0,0,0,0
+32,33,many task,Launch first version of Inno App before the October,['Number of issues'],0,0,0,0,0,0,0,1,0,0,0,0
+33,34,many bug,Launch first version of Inno App before the October,"['LOC', 'Number of bugs']",0,0,0,1,0,1,0,0,0,0,0,0
+34,35,many user visit website without ensure perfomance issue,Create a website for video streaming service,['Number of people'],0,0,0,0,0,0,0,0,1,0,0,0
+35,36,number bug current version program,Create a website for video streaming service,['Number of bugs'],0,0,0,0,0,1,0,0,0,0,0,0
+36,37,good app quality,Analyze the improvement of Rita App,"['Number of bugs', 'Test coverage']",0,0,0,0,0,1,0,0,0,0,1,0
+37,38,check reliability soft,Check quality of the software,['Test coverage'],0,0,0,0,0,0,0,0,0,0,1,0
+38,39,check completeness work,Check quality of the software,['Number of issues'],0,0,0,0,0,0,0,1,0,0,0,0
+39,40,many bug found use pair program development process,Analyze the efficiency of pair programming,['Number of bugs'],0,0,0,0,0,1,0,0,0,0,0,0
+40,41,much time take complete new software module use pair program,Analyze the efficiency of pair programming,['Time'],0,0,0,0,0,0,0,0,0,0,0,1
+41,42,much loc write use pair program,Analyze the efficiency of pair programming,['LOC'],0,0,0,1,0,0,0,0,0,0,0,0
+42,43,good quality,Increase code quality?,"['LOC', 'Number of bugs', 'Test coverage']",0,0,0,1,0,1,0,0,0,0,1,0
+43,44,method use identify bug,Improve the development process with the focus on detected bugs,"['LOC', 'Number of bugs']",0,0,0,1,0,1,0,0,0,0,0,0
+44,45,quality work,How to track the progress on current development process,"['LOC', 'Number of bugs']",0,0,0,1,0,1,0,0,0,0,0,0
+45,46,quantity work,How to track the progress on current development process,['Number of people'],0,0,0,0,0,0,0,0,1,0,0,0
+46,47,programmer productivity,Evaluate the effectiveness of a program,['Execution time'],0,0,1,0,0,0,0,0,0,0,0,0
+47,48,code quality satisfactory,Evaluate the effectiveness of a program,['Number of bugs'],0,0,0,0,0,1,0,0,0,0,0,0
+48,49,use tool,Evaluate the effectiveness of a program,['Number of people'],0,0,0,0,0,0,0,0,1,0,0,0
+49,50,project do expect deadline,Analyze the process with respect to result,['Time'],0,0,0,0,0,0,0,0,0,0,0,1
+50,51,project meet requirement,Analyze the process with respect to result,['Number of issues'],0,0,0,0,0,0,0,1,0,0,0,0
+51,52,project take expect cost,Analyze the process with respect to result,['Money'],0,0,0,0,1,0,0,0,0,0,0,0
+52,53,many line program,Increase software quality by testing,['LOC'],0,0,0,1,0,0,0,0,0,0,0,0
+53,54,much cover test,Increase software quality by testing,['Test coverage'],0,0,0,0,0,0,0,0,0,0,1,0
+54,55,many bug,Increase software quality by testing,"['LOC', 'Number of bugs']",0,0,0,1,0,1,0,0,0,0,0,0
+55,56,execution time,Increasing speed of several python programs,['Execution time'],0,0,1,0,0,0,0,0,0,0,0,0
+56,57,good developer perform task,Estimate teams productivity,"['Number of bugs', 'Number of issues']",0,0,0,0,0,1,0,1,0,0,0,0
+57,58,much time need develop,Develop a service for automatic attendance tracking within 3 months,['Time'],0,0,0,0,0,0,0,0,0,0,0,1
+58,59,many developer team,Develop a service for automatic attendance tracking within 3 months,['Number of people'],0,0,0,0,0,0,0,0,1,0,0,0
+59,60,programmer complete plan,Check if specific software development process is effective,['Number of issues'],0,0,0,0,0,0,0,1,0,0,0,0
+60,61,number detect unwanted behavior,Effectiveness of unit test,['Number of bugs'],0,0,0,0,0,1,0,0,0,0,0,0
+61,62,test phase enough cover code correctly write,Reduce number of peer reviews,['Number of bugs'],0,0,0,0,0,1,0,0,0,0,0,0
+62,63,long take complete task,Evaluate developers productivity in agile development,['Number of issues'],0,0,0,0,0,0,0,1,0,0,0,0
+63,64,quality code write,Evaluate developers productivity in agile development,['Number of bugs'],0,0,0,0,0,1,0,0,0,0,0,0
